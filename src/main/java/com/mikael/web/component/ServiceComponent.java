@@ -1,11 +1,13 @@
 package com.mikael.web.component;
 
-import org.springframework.boot.SpringApplicationRunListener;
-import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.support.ServletRequestHandledEvent;
 
+
+/**
+ * 来实现监听各个请求的信息
+ */
 @Component
 public class ServiceComponent implements ApplicationListener<ServletRequestHandledEvent> {
     @Override
