@@ -7,14 +7,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController("/c")
+@RestController
+@RequestMapping("/r")
 public class Test02Action {
 
     @Resource
     private  Test02Service test02Service;
 
 
-    @RequestMapping(value = "/test002",method = RequestMethod.GET)
+    @RequestMapping(value = "/test02",method = RequestMethod.GET)
     public Result test01(){
         Result result = test02Service.test02();
         return result;

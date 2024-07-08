@@ -4,6 +4,8 @@ package com.mikael.web.action;
 import com.mikael.web.bo.Result;
 import com.mikael.web.service.Imp.Test01ServiceImp;
 import com.mikael.web.service.Imp.Test02ServiceImp;
+import com.mikael.web.service.Test01Service;
+import com.mikael.web.service.Test02Service;
 import lombok.AllArgsConstructor;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class Test01Action {
 
     private final ApplicationContext applicationContext;
+
+    private final Test02Service test02Service;
 
 
     @RequestMapping(value = "/test01",method = RequestMethod.GET)
