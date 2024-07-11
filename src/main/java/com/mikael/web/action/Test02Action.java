@@ -15,9 +15,16 @@ public class Test02Action {
     private  Test02Service test02Service;
 
 
-    @RequestMapping(value = "/test02",method = RequestMethod.GET)
+    @RequestMapping(value = "/test01",method = RequestMethod.GET)
     public Result test01(){
         Result result = test02Service.test02();
+        return result;
+    }
+
+    @RequestMapping(value = "/test02",method = RequestMethod.GET)
+    public Result test02() throws InterruptedException {
+        Result result = test02Service.test02();
+        Thread.sleep(10000);
         return result;
     }
 
