@@ -18,6 +18,7 @@ public class Test02Action {
     @RequestMapping(value = "/test01",method = RequestMethod.GET)
     public Result test01(){
         Result result = test02Service.test02();
+        System.out.println("748456");
         return result;
     }
 
