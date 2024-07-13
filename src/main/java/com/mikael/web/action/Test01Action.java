@@ -20,12 +20,13 @@ public class Test01Action {
     private final Test02Service test02Service;
 
 
+
     @RequestMapping(value = "/test01", method = RequestMethod.GET)
     public String test01() {
 
         Test01ServiceImp test01ServiceImp = (Test01ServiceImp) applicationContext.getBean("Test01ServiceImp");
         System.out.println(test02Service.test01());
-        System.out.println("798546");
+        System.out.println("1234132");
         String s = test01ServiceImp.test01();
         return s;
     }
