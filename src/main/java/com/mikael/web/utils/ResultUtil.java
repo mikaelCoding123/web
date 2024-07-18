@@ -3,7 +3,7 @@ package com.mikael.web.utils;
 import com.mikael.web.bo.Result;
 
 
-public  class ResultUtil {
+public class ResultUtil {
 
 
     public static Result put(Integer integer, String msg, Object o) {
@@ -19,12 +19,12 @@ public  class ResultUtil {
         return serviceResult;
     }
 
-    public static Result success(){
+    public static Result success() {
         Result serviceResult = put(Integer.getInteger(CodeEnum.SUCCESS200.getCode()), CodeEnum.SUCCESS.getMsg(), null);
         return serviceResult;
     }
 
-    public  static  Result put( CodeEnum codeEnum, Object o){
+    public static Result put(CodeEnum codeEnum, Object o) {
         Result serviceResult = put(Integer.getInteger(codeEnum.getCode()), codeEnum.getMsg(), o);
         return serviceResult;
     }
