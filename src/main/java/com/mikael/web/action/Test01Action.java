@@ -5,12 +5,18 @@ import com.mikael.web.bo.Result;
 import com.mikael.web.service.Imp.Test01ServiceImp;
 import com.mikael.web.service.Imp.Test02ServiceImp;
 import com.mikael.web.service.Test02Service;
+import com.mikael.web.utils.ResultUtil;
+import jakarta.websocket.server.PathParam;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.logging.LoggerGroup;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+
+@Slf4j
 @AllArgsConstructor
 @RestController("/r")
 public class Test01Action {
@@ -41,6 +47,15 @@ public class Test01Action {
 
 
         return s;
+    }
+
+
+    //遇到特殊字符的时候怎么处理
+    @RequestMapping(value = "/test03", method = RequestMethod.GET)
+    public Result test03(@PathParam("type") String type) {
+        log.info("type==" + type);
+
+        return ResultUtil.success();
     }
 
 
