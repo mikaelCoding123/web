@@ -1,6 +1,6 @@
 package com.mikael.web.service.Imp;
 
-import com.mikael.web.bo.Result;
+import com.mikael.web.utils.result.Result;
 import com.mikael.web.service.Test02Service;
 import org.springframework.stereotype.Service;
 

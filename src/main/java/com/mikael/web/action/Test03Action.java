@@ -1,9 +1,9 @@
 package com.mikael.web.action;
 
 
-import com.mikael.web.bo.Result;
+import com.mikael.web.utils.result.Result;
 import com.mikael.web.service.Imp.ModeServiceImp;
-import com.mikael.web.utils.ResultUtil;
+import com.mikael.web.utils.result.ResultUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;

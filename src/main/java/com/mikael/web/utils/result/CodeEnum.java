@@ -1,4 +1,4 @@
-package com.mikael.web.utils;
+package com.mikael.web.utils.result;
 
 /**
  * encoded: UTF-8 写法必须按照javadoc的格式写清楚msg的内容

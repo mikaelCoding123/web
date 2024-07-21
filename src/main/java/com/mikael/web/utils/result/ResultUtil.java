@@ -1,6 +1,4 @@
-package com.mikael.web.utils;
-
-import com.mikael.web.bo.Result;
+package com.mikael.web.utils.result;
 
 
 public class ResultUtil {

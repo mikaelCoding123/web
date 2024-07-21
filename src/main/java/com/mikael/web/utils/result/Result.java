@@ -1,4 +1,4 @@
-package com.mikael.web.bo;
+package com.mikael.web.utils.result;
 
 import lombok.*;
 

@@ -1,6 +1,6 @@
 package com.mikael.web.action;
 
-import com.mikael.web.bo.Result;
+import com.mikael.web.utils.result.Result;
 import com.mikael.web.service.Test02Service;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.RequestMapping;

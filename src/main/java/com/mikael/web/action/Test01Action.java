@@ -1,15 +1,14 @@
 package com.mikael.web.action;
 
 
-import com.mikael.web.bo.Result;
+import com.mikael.web.utils.result.Result;
 import com.mikael.web.service.Imp.Test01ServiceImp;
 import com.mikael.web.service.Imp.Test02ServiceImp;
 import com.mikael.web.service.Test02Service;
-import com.mikael.web.utils.ResultUtil;
+import com.mikael.web.utils.result.ResultUtil;
 import jakarta.websocket.server.PathParam;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.logging.LoggerGroup;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

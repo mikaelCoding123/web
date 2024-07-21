@@ -1,6 +1,6 @@
 package com.mikael.web.service;
 
-import com.mikael.web.bo.Result;
+import com.mikael.web.utils.result.Result;
 
 public interface Test01Service {
     public String test01();
