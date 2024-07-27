@@ -6,4 +6,6 @@ public interface Test02Service {
     public String test01();
 
     public Result test02();
+
+    public Result test03();
 }
