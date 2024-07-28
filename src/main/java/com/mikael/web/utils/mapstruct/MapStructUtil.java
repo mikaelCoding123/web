@@ -1,5 +1,7 @@
 package com.mikael.web.utils.mapstruct;
 
+import cn.hutool.core.lang.Snowflake;
+
 import java.util.concurrent.ThreadLocalRandom;
 
 public class MapStructUtil {
@@ -9,6 +11,8 @@ public class MapStructUtil {
             int a = ThreadLocalRandom.current().nextInt(100);
             System.out.println(a);
         }
+        Snowflake snowflake = new Snowflake();
+        System.out.println(snowflake.nextIdStr());
 
 
     }

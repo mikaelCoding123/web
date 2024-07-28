@@ -4,6 +4,7 @@ import com.mikael.web.utils.result.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
 import org.springframework.core.SpringVersion;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,6 +30,7 @@ public class WebApplication {
 
         ResponseEntity<Result> resultResponseEntity =new ResponseEntity<>(HttpStatus.OK);
         SpringApplication.run(WebApplication.class, args);
+
     }
 
 }
