@@ -1,0 +1,8 @@
+$(
+    function ac() {
+    alert("hello")
+}
+
+)
+
+

@@ -28,7 +28,7 @@ public class WebApplication {
         System.out.println("默认初始堆内存: " + totalMemory / (1024 * 1024) + "MB");
         System.out.println(SpringVersion.getVersion());
 
-        ResponseEntity<Result> resultResponseEntity =new ResponseEntity<>(HttpStatus.OK);
+        ResponseEntity<Result> resultResponseEntity = new ResponseEntity<>(HttpStatus.OK);
         SpringApplication.run(WebApplication.class, args);
 
     }

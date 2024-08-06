@@ -15,6 +15,10 @@ public class ZeRenLianHandle {
 
     public void execute(String msg) {
         for (ZeRenLian zeRenLian : zeRenLians) {
+            //这里判断是否要继续下一个节点
+//            if(zeRenLian.handle(msg).equals("next")) {
+//                continue;
+//            }
             zeRenLian.handle(msg);
         }
 
