@@ -1,11 +1,13 @@
 package com.mikael.web.action;
 
+import com.mikael.web.utils.exception.BizException;
 import com.mikael.web.utils.result.Result;
 import com.mikael.web.service.Test02Service;
 import jakarta.annotation.Resource;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.BeanUtils;
+import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/r")
@@ -16,10 +18,15 @@ public class Test02Action {
 
 
     @RequestMapping(value = "/test01",method = RequestMethod.GET)
+    @ResponseStatus(code = HttpStatus.OK)
     public Result test01(){
         Result result = test02Service.test02();
-        System.out.println("748456");
-        return result;
+        System.out.println(result);
+        Result build = result.builder().code(4893418).build();
+
+        build.setCode(453).setMsg("fjklasf").setData("fjiw222222");
+
+        return build;
     }
 
     @RequestMapping(value = "/test02",method = RequestMethod.GET)
@@ -27,6 +34,18 @@ public class Test02Action {
         Result result = test02Service.test02();
         Thread.sleep(10000);
         return result;
+    }
+
+    @RequestMapping(value = "/exception" ,method = RequestMethod.GET)
+    public void test03() throws InterruptedException {
+
+        throw new BizException("ksljfiowjklsjf");
+    }
+
+    @ExceptionHandler(BizException.class)
+    @ResponseStatus(code = HttpStatus.INTERNAL_SERVER_ERROR,reason = "服务休息了 ")
+    public String bizException(BizException e){
+        return e.getMessage();
     }
 
 

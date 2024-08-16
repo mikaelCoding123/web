@@ -26,10 +26,12 @@ public class WebApplication {
         // 获取并打印默认的初始堆内存大小（以字节为单位），然后转换为以兆字节（MB）为单位
         long totalMemory = runtime.totalMemory();
         System.out.println("默认初始堆内存: " + totalMemory / (1024 * 1024) + "MB");
-        System.out.println(SpringVersion.getVersion());
+        System.out.println("Spring Version "+SpringVersion.getVersion());
 
         ResponseEntity<Result> resultResponseEntity = new ResponseEntity<>(HttpStatus.OK);
         SpringApplication.run(WebApplication.class, args);
+
+        System.out.println(runtime.freeMemory()/(1024 * 1024) + "MB");
 
     }
 
