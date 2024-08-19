@@ -1,9 +1,13 @@
 package com.mikael.web;
 
+import cn.hutool.core.lang.Snowflake;
 import com.mikael.web.utils.result.Result;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.catalina.startup.Tomcat;
+import org.slf4j.MDC;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.web.ServerProperties;
 import org.springframework.context.ApplicationContext;
 import org.springframework.core.SpringVersion;
 import org.springframework.http.HttpStatus;

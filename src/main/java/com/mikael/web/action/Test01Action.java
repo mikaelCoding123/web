@@ -1,6 +1,8 @@
 package com.mikael.web.action;
 
 
+import com.mikael.web.bo.Admin;
+import com.mikael.web.utils.result.CodeEnum;
 import com.mikael.web.utils.result.Result;
 import com.mikael.web.service.Imp.Test01ServiceImp;
 import com.mikael.web.service.Imp.Test02ServiceImp;
@@ -10,6 +12,7 @@ import jakarta.websocket.server.PathParam;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationContext;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -39,13 +42,16 @@ public class Test01Action {
 
     @RequestMapping(value = "/test02", method = RequestMethod.GET)
     public Result test02() {
-
         Test02ServiceImp test01ServiceImp = (Test02ServiceImp) applicationContext.getBean("Test02ServiceImp");
-
         Result s = test01ServiceImp.test02();
-
-
         return s;
+    }
+
+    //post 请求
+    @RequestMapping(value = "/postTest",method = RequestMethod.POST)
+    public Result postTest(@Validated Admin admin) {
+        log.info(admin.toString());
+        return ResultUtil.success();
     }
 
 
