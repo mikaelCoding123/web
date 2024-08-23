@@ -21,6 +21,7 @@ import org.springframework.http.ResponseEntity;
 public class WebApplication {
 
     public static void main(String[] args) {
+        MDC.put("traceId", "1234567890");
 
         // 获取运行时环境对象
         Runtime runtime = Runtime.getRuntime();
@@ -34,6 +35,7 @@ public class WebApplication {
 
         ResponseEntity<Result> resultResponseEntity = new ResponseEntity<>(HttpStatus.OK);
         SpringApplication.run(WebApplication.class, args);
+
 
         System.out.println(runtime.freeMemory()/(1024 * 1024) + "MB");
 
