@@ -1,14 +1,12 @@
 package com.mikael.web;
 
-import cn.hutool.core.lang.Snowflake;
 import com.mikael.web.utils.result.Result;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.catalina.startup.Tomcat;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.slf4j.MDC;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.web.ServerProperties;
-import org.springframework.context.ApplicationContext;
 import org.springframework.core.SpringVersion;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,11 +14,16 @@ import org.springframework.http.ResponseEntity;
 /**
  * jdk22
  */
+
 @Slf4j
 @SpringBootApplication
 public class WebApplication {
 
+    private static final Logger LOG = LogManager.getLogger();
+
     public static void main(String[] args) {
+
+
         MDC.put("traceId", "1234567890");
 
         // 获取运行时环境对象
@@ -38,6 +41,8 @@ public class WebApplication {
 
 
         System.out.println(runtime.freeMemory()/(1024 * 1024) + "MB");
+
+        LOG.info("2131213231323");
 
     }
 

@@ -60,6 +60,14 @@
             <version>1.18.32</version>
         </dependency>
 
+
+<!--        https://blog.csdn.net/m0_71777195/article/details/132422575-->
+        <!-- 引入websocket -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-websocket</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>

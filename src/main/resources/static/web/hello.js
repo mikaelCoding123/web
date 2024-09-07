@@ -1,8 +1,7 @@
 $(
     function ac() {
-    alert("hello")
-}
-
+        alert("hello")
+    }
 )
 
 
