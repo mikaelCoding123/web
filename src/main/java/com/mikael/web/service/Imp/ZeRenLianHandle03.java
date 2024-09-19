@@ -18,6 +18,6 @@ public class ZeRenLianHandle03 implements ZeRenLian {
     @Override
     public void handle(String msg) {
             log.info("ZeRenLianHandle03 handle msg:{}",msg);
-
+            log.info("1312121");
     }
 }
