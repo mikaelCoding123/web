@@ -1,6 +1,8 @@
 package com.mikael.web.utils.result;
 
 
+import org.slf4j.MDC;
+
 public class ResultUtil {
 
 
@@ -9,6 +11,7 @@ public class ResultUtil {
         serviceResult.setCode(integer);
         serviceResult.setMsg(msg);
         serviceResult.setData(o);
+        serviceResult.setTraceId(MDC.get("traceId"));
         return serviceResult;
     }
 

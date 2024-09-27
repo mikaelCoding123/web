@@ -18,28 +18,30 @@ class WebApplicationTests {
 
 }
 
-class test{
+class test {
 
     public static void main(String[] args) {
+
+
         Path sourcePath = Paths.get("Z:\\yu\\y.txt");
 //        Path destinationPath = Paths.get("Z:\\yu\\");
 
-        try {
-            for (int i = 0; i < 3000; i++) {
-                Files.copy(sourcePath, Paths.get("Z:\\yu\\p"+i+".txt"), StandardCopyOption.REPLACE_EXISTING);
-            }
+        ThreadLocal<String> threadLocal = new ThreadLocal<>();
+        String[] a = new String[]{"1", "2", "3","4","5"};
 
-
-
-
-
-
-
-
-            System.out.println("文件复制成功！");
-        } catch (IOException e) {
-            System.out.println("文件复制失败: " + e.getMessage());
+        for (int i = 0; i < 5; i++) {
+            threadLocal.set(a[i]);
+            new Thread(() -> {
+                for (int t = 0; t < 10000; t++) {
+                    try {
+                        Files.copy(sourcePath, Paths.get("Z:\\yu\\p" + threadLocal.get() + "" + t + ".txt"), StandardCopyOption.REPLACE_EXISTING);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            }).run();
         }
+
     }
 
 

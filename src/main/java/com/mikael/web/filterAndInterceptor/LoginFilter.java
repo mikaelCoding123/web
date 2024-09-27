@@ -1,11 +1,14 @@
 package com.mikael.web.filterAndInterceptor;
 
 import jakarta.servlet.*;
+import jakarta.servlet.annotation.WebFilter;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 
 
+
+@WebFilter(urlPatterns = "/*", filterName = "loginFilter")
 @Slf4j
 public class LoginFilter implements Filter {
     @Override
@@ -15,7 +18,6 @@ public class LoginFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-
         log.info("LoginFilter===================");
         //将信息往下传
         filterChain.doFilter(servletRequest, servletResponse);

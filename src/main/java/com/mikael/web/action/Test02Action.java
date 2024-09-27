@@ -4,6 +4,9 @@ import com.mikael.web.utils.exception.BizException;
 import com.mikael.web.utils.result.Result;
 import com.mikael.web.service.Test02Service;
 import jakarta.annotation.Resource;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.MDC;
 import org.springframework.beans.BeanUtils;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/r")
 public class Test02Action {
 
+    private static final Logger log = LoggerFactory.getLogger(Test02Action.class);
     @Resource
     private  Test02Service test02Service;
 
@@ -20,11 +24,13 @@ public class Test02Action {
     @RequestMapping(value = "/test01",method = RequestMethod.GET)
     @ResponseStatus(code = HttpStatus.OK)
     public Result test01(){
+
+        log.info("test01======"+ MDC.get("traceId"));
         Result result = test02Service.test02();
         System.out.println(result);
         Result build = result.builder().code(4893418).build();
 
-        build.setCode(453).setMsg("fjklasf").setData("fjiw222222");
+        build.setCode(453).setMsg("fjklasf").setData("fjiw222222").setTraceId(MDC.get("traceId"));
 
         return build;
     }
