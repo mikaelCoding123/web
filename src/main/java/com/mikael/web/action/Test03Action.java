@@ -5,7 +5,6 @@ import com.mikael.web.service.Imp.ModeServiceImp;
 import com.mikael.web.service.Test02Service;
 import com.mikael.web.utils.result.Result;
 import com.mikael.web.utils.result.ResultUtil;
-import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -19,9 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class Test03Action {
     private static final long serialVersionUID = 1L;
 
-    @Resource
+    @Autowired
     private ApplicationContext applicationContext;
-    @Resource
+    @Autowired
     private Test02Service test02Service;
 
     @RequestMapping(value = "/test01", method = RequestMethod.GET)
