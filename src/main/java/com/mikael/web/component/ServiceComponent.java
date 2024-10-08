@@ -3,6 +3,7 @@ package com.mikael.web.component;
 import com.mikael.web.service.Test02Service;
 import lombok.AllArgsConstructor;
 import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
@@ -12,6 +13,7 @@ import org.springframework.web.context.support.ServletRequestHandledEvent;
 /**
  * 来实现监听各个请求的信息
  */
+@Slf4j
 @Component
 @AllArgsConstructor
 @Setter
@@ -24,9 +26,9 @@ public class ServiceComponent implements ApplicationListener<ServletRequestHandl
         Throwable failureCause = event.getFailureCause();
         System.out.println(test02Service.test01()+"  foh ,beans 数量" +applicationContext.getBeanDefinitionCount());
         if (failureCause != null) {
-            System.out.printf( "请求时发生的错误原因：%S",failureCause.getMessage());
+            log.info( "请求时发生的错误原因：%S",failureCause.getMessage());
         }
-        System.err.printf(" 请求客户端地址: %S,请求URL: %S,请求Method：%S,请求耗时：%d Millis%n ",event.getClientAddress(),event.getRequestUrl(),event.getMethod(),event.getProcessingTimeMillis());
+        log.info(" 请求客户端地址: %S,请求URL: %S,请求Method：%S,请求耗时：%d Millis%n ",event.getClientAddress(),event.getRequestUrl(),event.getMethod(),event.getProcessingTimeMillis());
     }
 
     @Override
