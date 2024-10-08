@@ -16,18 +16,15 @@ public class ResultUtil {
     }
 
     public static Result error() {
-        Result serviceResult = put(Integer.getInteger(CodeEnum.ERROR.getCode()), CodeEnum.ERROR.getMsg(), null);
-        return serviceResult;
+        return put(Integer.getInteger(CodeEnum.ERROR.getCode()), CodeEnum.ERROR.getMsg(), null);
     }
 
     public static Result success() {
-        Result serviceResult = put(Integer.getInteger(CodeEnum.SUCCESS200.getCode()), CodeEnum.SUCCESS.getMsg(), null);
-        return serviceResult;
+        return put(Integer.getInteger(CodeEnum.SUCCESS200.getCode()), CodeEnum.SUCCESS.getMsg(), null);
     }
 
     public static Result put(CodeEnum codeEnum, Object o) {
-        Result serviceResult = put(Integer.getInteger(codeEnum.getCode()), codeEnum.getMsg(), o);
-        return serviceResult;
+        return put(Integer.getInteger(codeEnum.getCode()), codeEnum.getMsg(), o);
     }
 
     public static void main(String[] args) {
