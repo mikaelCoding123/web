@@ -36,6 +36,7 @@ public class WebApplication {
         long totalMemory = runtime.totalMemory();
         System.out.println("默认初始堆内存: " + totalMemory / (1024 * 1024) + "MB");
         System.out.println("Spring Version "+SpringVersion.getVersion());
+        System.out.println("jdk version: "+System.getProperty("java.version"));
 
         ResponseEntity<Result> resultResponseEntity = new ResponseEntity<>(HttpStatus.OK);
         SpringApplication.run(WebApplication.class, args);
