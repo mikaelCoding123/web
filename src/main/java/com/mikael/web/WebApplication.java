@@ -11,6 +11,9 @@ import org.springframework.core.SpringVersion;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import java.io.Serial;
+import java.io.Serializable;
+
 /**
  * jdk21
  */
@@ -18,8 +21,10 @@ import org.springframework.http.ResponseEntity;
 
 @Slf4j
 @SpringBootApplication
-public class WebApplication {
+public class WebApplication implements Serializable {
 
+    @Serial
+    private static final long serialVersionUID = 1L;
     private static final Logger LOG = LogManager.getLogger();
 
     public static void main(String[] args) {

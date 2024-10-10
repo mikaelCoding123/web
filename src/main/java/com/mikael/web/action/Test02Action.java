@@ -41,6 +41,7 @@ public class Test02Action {
     }
 
     @RequestMapping(value = "/exception", method = RequestMethod.GET)
+    @ResponseStatus(code = HttpStatus.BAD_REQUEST)
     public void test03() throws InterruptedException {
 
         throw new BizException("ksljfiowjklsjf");

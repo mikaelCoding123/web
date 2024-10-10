@@ -8,19 +8,21 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-
+/**
+ * 注意不要重复获取异常，容易形成嵌套死循环
+ */
 @ControllerAdvice
 public class ControllerAdvice01 {
-    @ResponseStatus(code = HttpStatus.NOT_FOUND,reason = "找不到服务")
+    @ResponseStatus(code = HttpStatus.BAD_GATEWAY,reason = "找不到服务")
     @ExceptionHandler(BizException.class)
     public String handleException(Exception e) {
-        return "error";
+        return "error.html";
     }
 
-    @ExceptionHandler(Exception.class)
-    public Result handleException(){
-        return ResultUtil.error();
-    }
+//    @ExceptionHandler(Exception.class)
+//    public Result handleException(){
+//        return ResultUtil.error();
+//    }
 
 
 }

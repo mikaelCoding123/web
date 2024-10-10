@@ -12,10 +12,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.Serial;
+import java.io.Serializable;
+
 @Slf4j
 @RestController
 @RequestMapping("/mode")
-public class Test03Action {
+public class Test03Action implements Serializable {
+    @Serial
     private static final long serialVersionUID = 1L;
 
     @Autowired

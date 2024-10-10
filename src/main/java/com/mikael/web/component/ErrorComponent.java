@@ -16,9 +16,9 @@ import java.util.Locale;
 public class ErrorComponent implements ErrorPageRegistrar {
     @Override
     public void registerErrorPages(ErrorPageRegistry registry) {
-        ErrorPage error400Page = new ErrorPage(HttpStatus.BAD_REQUEST, "/index.html");
-        ErrorPage error401Page = new ErrorPage(HttpStatus.UNAUTHORIZED, "/error401Page");
-        ErrorPage error404Page = new ErrorPage(HttpStatus.NOT_FOUND, "/index.html");
+        ErrorPage error400Page = new ErrorPage(HttpStatus.UNAUTHORIZED, "/UNAUTHORIZED.html");
+        ErrorPage error401Page = new ErrorPage(HttpStatus.BAD_REQUEST, "/error401Page.html");
+        ErrorPage error404Page = new ErrorPage(HttpStatus.NOT_FOUND, "/404.html");
         ErrorPage error500Page = new ErrorPage(HttpStatus.INTERNAL_SERVER_ERROR, "/err.html");
         registry.addErrorPages(error400Page,error401Page,error404Page,error500Page);
     }
