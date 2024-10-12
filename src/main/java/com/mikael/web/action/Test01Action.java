@@ -27,7 +27,7 @@ import java.util.UUID;
 @Slf4j
 @AllArgsConstructor
 @RestController
-@RequestMapping("/r")
+@RequestMapping("/test01")
 public class Test01Action {
 
     private final ApplicationContext applicationContext;

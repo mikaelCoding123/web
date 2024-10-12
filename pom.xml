@@ -61,7 +61,7 @@
         </dependency>
 
 
-<!--        https://blog.csdn.net/m0_71777195/article/details/132422575-->
+        <!--        https://blog.csdn.net/m0_71777195/article/details/132422575-->
         <!-- 引入websocket -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -86,11 +86,11 @@
             <version>5.8.4</version>
         </dependency>
 
-        <dependency>
-            <groupId>io.netty</groupId>
-            <artifactId>netty-bom</artifactId>
-            <version>4.1.113.Final</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>io.netty</groupId>-->
+<!--            <artifactId>netty-bom</artifactId>-->
+<!--            <version>4.1.113.Final</version>-->
+<!--        </dependency>-->
 
 
 
@@ -105,11 +105,11 @@
             <version>3.3.2</version>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>io.netty</groupId>-->
-<!--            <artifactId>netty-bom</artifactId>-->
-<!--            <version>4.1.113.Final</version>-->
-<!--        </dependency>-->
+                <dependency>
+                    <groupId>io.netty</groupId>
+                    <artifactId>netty-bom</artifactId>
+                    <version>4.1.113.Final</version>
+                </dependency>
 
         <dependency>
             <groupId>com.google.guava</groupId>

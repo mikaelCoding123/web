@@ -11,7 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/r")
+@RequestMapping("/test02")
 public class Test02Action {
 
     private static final Logger log = LoggerFactory.getLogger(Test02Action.class);
@@ -23,6 +23,7 @@ public class Test02Action {
     @ResponseStatus(code = HttpStatus.OK)
     public Result test01() {
 
+        log.info("test01===="+Thread.currentThread());
         log.info("test01======" + MDC.get("traceId"));
         Result result = test02Service.test02();
         System.out.println(result);
