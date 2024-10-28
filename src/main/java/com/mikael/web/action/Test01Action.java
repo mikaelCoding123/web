@@ -21,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Optional;
 import java.util.UUID;
 
 
@@ -33,8 +34,6 @@ public class Test01Action {
     private final ApplicationContext applicationContext;
 
     private final Test02Service test02Service;
-
-
 
     @RequestMapping(value = "/test01", method = RequestMethod.GET)
     public String test01() {
@@ -77,6 +76,7 @@ public class Test01Action {
       if (file.isEmpty()) {
             return ResultUtil.put(CodeEnum.ERROR, "文件为空");
       }
+
         // 获取文件名
         file.transferTo(new File("Z:\\test\\ "+ UUID.randomUUID() + file.getOriginalFilename()));
         return ResultUtil.success();
