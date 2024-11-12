@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.core.SpringVersion;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.EnableAsync;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -18,13 +19,12 @@ import java.io.Serializable;
  * jdk21
  */
 
-
-@Slf4j
+@EnableAsync
 @SpringBootApplication
 public class WebApplication implements Serializable {
 
-    @Serial
-    private static final long serialVersionUID = 1L;
+    @Serial//jdk14以后开始
+    private final static long serialVersionUID = 6961728318907695402L;
     private static final Logger LOG = LogManager.getLogger();
 
     public static void main(String[] args) {
