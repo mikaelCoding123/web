@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sse</title>
+</head>
+<body>
+<div>sse测试</div>
+<div id="result"></div>
+</body>
+</html>
+<script>
+    //实际开发中id参数可以做成变量传参
+    var source = new EventSource('http://127.0.0.1:8090/sse/subscribe?id=123');
+    var result=document.getElementById('result');
+    // 监听到服务端发来的消息回调
+    source.onmessage = function (event) {
+        text = result.innerText;
+        text += '\n' + event.data;
+        result.innerText = text;
+    };
+    //连接上服务端回调
+    source.onopen = function (event) {
+        text = result.innerText;
+        text += '\n 开启: ';
+        console.log(event);
+        result.innerText = text;
+    };
+</script>
