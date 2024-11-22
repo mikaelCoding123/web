@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Aspect
 public class Test01Aop {
-    private  Logger log= LoggerFactory.getLogger(Test01Aop.class);
+    private Logger log = LoggerFactory.getLogger(Test01Aop.class);
 
     // 定义切点（拦截的规则）
     @Pointcut("execution(* com.mikael.web.action.*.*())")
@@ -25,8 +25,7 @@ public class Test01Aop {
     // 前置通知
     @Before("pointcut()")
     public void doBefore() {
-        log.info("执行了前置通知+++++++++++++");
-
+        log.info("88888888888888888888888");
     }
 
     // 后置通知

@@ -2,6 +2,7 @@ package com.mikael.web.action;
 
 
 import com.mikael.web.bo.Admin;
+import com.mikael.web.utils.exception.BizException;
 import com.mikael.web.utils.result.CodeEnum;
 import com.mikael.web.utils.result.Result;
 import com.mikael.web.service.Imp.Test01ServiceImp;
@@ -12,6 +13,7 @@ import jakarta.websocket.server.PathParam;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationContext;
+import org.springframework.util.Assert;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,6 +25,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.function.Supplier;
 
 
 @Slf4j
@@ -54,8 +57,9 @@ public class Test01Action {
     }
 
     //post 请求
-    @RequestMapping(value = "/postTest",method = RequestMethod.POST)
+    @RequestMapping(value = "/postTest", method = RequestMethod.POST)
     public Result postTest(@Validated Admin admin) {
+        Optional.ofNullable(admin).orElseThrow();
         log.info(admin.toString());
         return ResultUtil.success();
     }
@@ -73,17 +77,14 @@ public class Test01Action {
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
     public Result upload(@RequestParam("file") MultipartFile file) throws IOException {
         log.info("file==" + file);
-      if (file.isEmpty()) {
+        if (file.isEmpty()) {
             return ResultUtil.put(CodeEnum.ERROR, "文件为空");
-      }
+        }
 
         // 获取文件名
-        file.transferTo(new File("Z:\\test\\ "+ UUID.randomUUID() + file.getOriginalFilename()));
+        file.transferTo(new File("Z:\\test\\ " + UUID.randomUUID() + file.getOriginalFilename()));
         return ResultUtil.success();
     }
-
-
-
 
 
 }

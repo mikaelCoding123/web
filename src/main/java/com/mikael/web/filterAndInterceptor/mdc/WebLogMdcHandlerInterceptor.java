@@ -16,10 +16,10 @@ public class WebLogMdcHandlerInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        String traceId = request.getHeader("requestId");
+        String traceId = request.getHeader("traceId");
 
         //过滤js、html等页面的请求
-        if (".".indexOf(request.getRequestURI()) == -1) {
+        if (".".indexOf(request.getRequestURI()) == 0) {
             log.info(request.getRequestURI() + "==========11");
             return true;
         }
@@ -41,6 +41,12 @@ public class WebLogMdcHandlerInterceptor implements HandlerInterceptor {
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
         // 请求处理之后进行调用，但是在视图被渲染之前（Controller方法调用之后）
+    }
+
+
+    public static void main(String[] args) {
+        String str = "1234";
+        System.out.println(str.indexOf("8"));
     }
 
 

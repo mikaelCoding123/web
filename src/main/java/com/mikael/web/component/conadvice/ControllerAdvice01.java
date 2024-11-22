@@ -13,16 +13,16 @@ import org.springframework.web.bind.annotation.ResponseStatus;
  */
 @ControllerAdvice
 public class ControllerAdvice01 {
-    @ResponseStatus(code = HttpStatus.BAD_GATEWAY,reason = "找不到服务")
+    @ResponseStatus(code = HttpStatus.BAD_GATEWAY, reason = "找不到服务")
     @ExceptionHandler(BizException.class)
-    public String handleException(Exception e) {
+    public String handleException(BizException e) {
         return "error.html";
     }
 
-//    @ExceptionHandler(Exception.class)
-//    public Result handleException(){
-//        return ResultUtil.error();
-//    }
+    @ExceptionHandler(Exception.class)
+    public Result handleException(Exception e) {
+        return ResultUtil.error(e);
+    }
 
 
 }

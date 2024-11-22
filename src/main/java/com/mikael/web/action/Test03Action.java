@@ -1,8 +1,11 @@
 package com.mikael.web.action;
 
 
+import com.mikael.web.bo.ModeType;
+import com.mikael.web.component.aop.Test;
 import com.mikael.web.service.Imp.ModeServiceImp;
 import com.mikael.web.service.Test02Service;
+import com.mikael.web.utils.ServiceEnum;
 import com.mikael.web.utils.result.Result;
 import com.mikael.web.utils.result.ResultUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -45,6 +48,15 @@ public class Test03Action implements Serializable {
         return ResultUtil.success();
     }
 
+    /**
+     * 枚举进行策略模式
+     */
+    @RequestMapping(value = "/enums", method = RequestMethod.POST)
+    @Test(value ="1234")
+    public Result enums(ModeType modeType) {
+        ServiceEnum.valueOf(modeType.getModeType()).getService().sayHello("111");
+        return ResultUtil.success();
+    }
 
 
 }
