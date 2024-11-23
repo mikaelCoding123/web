@@ -54,7 +54,7 @@ public class Test03Action implements Serializable {
     @RequestMapping(value = "/enums", method = RequestMethod.POST)
     @Test(value ="1234")
     public Result enums(ModeType modeType) {
-        ServiceEnum.valueOf(modeType.getModeType()).getService().sayHello("111");
+        ServiceEnum.valueOf(modeType.getModeType()).getService().sayHello(modeType.getObject().toString());
         return ResultUtil.success();
     }
 

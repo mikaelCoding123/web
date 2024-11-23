@@ -10,7 +10,7 @@ public class WebConfig implements WebMvcConfigurer {
  
     @Autowired
     private WebLogMdcHandlerInterceptor webLogMdcHandlerInterceptor;
- 
+
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(webLogMdcHandlerInterceptor)

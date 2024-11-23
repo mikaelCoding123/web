@@ -13,5 +13,6 @@ public class ModeType {
     @NotNull
     @Size(min = 2, max = 10)
     private String modeType;
+    private Object object;
 
 }

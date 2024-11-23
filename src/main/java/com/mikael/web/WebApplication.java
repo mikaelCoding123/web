@@ -11,6 +11,7 @@ import org.springframework.core.SpringVersion;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.web.socket.config.annotation.EnableWebSocket;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -18,7 +19,6 @@ import java.io.Serializable;
 /**
  * jdk21
  */
-
 @EnableAsync
 @SpringBootApplication
 public class WebApplication implements Serializable {

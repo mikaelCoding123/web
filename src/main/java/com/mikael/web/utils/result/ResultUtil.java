@@ -11,15 +11,20 @@ public class ResultUtil {
         serviceResult.setCode(integer);
         serviceResult.setMsg(msg);
         serviceResult.setData(o);
-        serviceResult.setTraceId(MDC.get("traceId"));
+        if (MDC.get("traceId") == null) {
+            serviceResult.setTraceId("1234567890");
+        } else {
+            serviceResult.setTraceId(MDC.get("traceId"));
+        }
         return serviceResult;
     }
 
     public static Result error() {
         return put(Integer.getInteger(CodeEnum.ERROR.getCode()), CodeEnum.ERROR.getMsg(), null);
     }
-    public static Result error(Object e) {
-        return put(Integer.getInteger(CodeEnum.ERROR.getCode()), CodeEnum.ERROR.getMsg(), e);
+
+    public static Result error(Object o) {
+        return put(Integer.getInteger(CodeEnum.ERROR.getCode()), CodeEnum.ERROR.getMsg(), o);
 
     }
 

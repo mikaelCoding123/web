@@ -19,10 +19,10 @@ public class ControllerAdvice01 {
         return "error.html";
     }
 
-    @ExceptionHandler(Exception.class)
-    public Result handleException(Exception e) {
-        return ResultUtil.error(e);
-    }
+//    @ExceptionHandler(Exception.class)
+//    public Result handleException(Exception e) {
+//        return ResultUtil.error(e);
+//    }
 
 
 }
