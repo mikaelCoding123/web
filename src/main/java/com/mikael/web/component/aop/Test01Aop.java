@@ -37,16 +37,15 @@ public class Test01Aop {
 
     // 环绕通知
     @Around("pointcut()")
-    public Object doAround(ProceedingJoinPoint joinPoint) {
+    public Object doAround(ProceedingJoinPoint joinPoint) throws Throwable {
         Object result = null;
         // 前置业务代码
         log.info("环绕通知的前置执行方法");
-        try {
-            // 执行目标方法
-            result = joinPoint.proceed();
-        } catch (Throwable e) {
-            e.printStackTrace();
-        }
+
+        //这里的异常要往上抛否则全局捕获异常捕获失败
+        // 执行目标方法
+        result = joinPoint.proceed();
+
         // 后置业务执行代码
         log.info("环绕通知的后置执行方法");
         return result;
