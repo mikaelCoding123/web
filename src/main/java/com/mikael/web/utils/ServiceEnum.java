@@ -8,16 +8,17 @@ import lombok.Getter;
 @Getter
 public enum ServiceEnum {
 
-    TEST02("TEST02",new Enum02ServiceImp()),
-
-    TEST01("TEST01",new Enum01ServiceImp());
+    TEST01("TEST01", new Enum01ServiceImp()),
+    TEST02("TEST02", new Enum02ServiceImp());
 
     private final String serviceName;
     private final EnumService service;
 
-    ServiceEnum(String serviceName, EnumService enumService){
+    ServiceEnum(String serviceName, EnumService enumService) {
         this.serviceName = serviceName;
         this.service = enumService;
-    };
+    }
+
+    ;
 
 }

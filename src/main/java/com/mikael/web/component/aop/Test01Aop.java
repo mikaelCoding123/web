@@ -18,7 +18,7 @@ public class Test01Aop {
     private Logger log = LoggerFactory.getLogger(Test01Aop.class);
 
     // 定义切点（拦截的规则）
-    @Pointcut("execution(* com.mikael.web.action.*.*())")
+    @Pointcut("execution(* com.mikael.web.action.Test01Action.*())")
     public void pointcut() {
     }
 

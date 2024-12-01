@@ -7,6 +7,8 @@ import org.apache.logging.log4j.Logger;
 import org.slf4j.MDC;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.ServletComponentScan;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.SpringVersion;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +23,7 @@ import java.io.Serializable;
  */
 @EnableAsync
 @SpringBootApplication
+@ServletComponentScan //解决filter双重注册及注册时urlPatterns不匹配问题
 public class WebApplication implements Serializable {
 
     @Serial//jdk14以后开始

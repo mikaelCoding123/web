@@ -17,7 +17,7 @@ import org.springframework.web.context.support.ServletRequestHandledEvent;
 @Component
 @AllArgsConstructor
 @Setter
-public class ServiceComponent implements ApplicationListener<ServletRequestHandledEvent> {
+public class ServiceListenerComponent implements ApplicationListener<ServletRequestHandledEvent> {
     private Test02Service test02Service;
     private ApplicationContext applicationContext;
 
