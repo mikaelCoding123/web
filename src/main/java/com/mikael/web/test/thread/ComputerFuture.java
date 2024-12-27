@@ -1,7 +1,6 @@
 package com.mikael.web.test.thread;
 
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.TimeUnit;
 import java.util.function.BiFunction;
 
 /**
@@ -16,14 +15,14 @@ public class ComputerFuture {
                 CompletableFuture.supplyAsync(
                         () -> {
                             System.out.println("1-1-1");
-                            sleep(16, TimeUnit.SECONDS);
+                            sleep(16);
                             return "1-1-2";
                         });
         CompletableFuture<String> uCompletableFuture2 =
                 CompletableFuture.supplyAsync(
                         () -> {
                             System.out.println("2-2-1");
-                            sleep(11, TimeUnit.SECONDS);
+                            sleep(11);
                             return "2-2-2";
                         });
 
@@ -34,11 +33,11 @@ public class ComputerFuture {
                             @Override
                             public String apply(String s, String s2) {
                                 System.out.println("3-1");
-                                sleep(7, TimeUnit.SECONDS);
+                                sleep(7);
                                 return "3完成";
                             }
                         });
-        sleep(10, TimeUnit.SECONDS);
+        sleep(10);
         System.out.println(completableFuture3.join());
 
         // 按顺序执行
@@ -49,7 +48,7 @@ public class ComputerFuture {
         // 3完成
     }
 
-    private static void sleep(int i, TimeUnit seconds) {
+    private static void sleep(int i) {
         try {
             Thread.sleep(i * 1000);
         } catch (InterruptedException e) {

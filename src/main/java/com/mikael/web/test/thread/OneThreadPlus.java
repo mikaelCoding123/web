@@ -1,6 +1,5 @@
 package com.mikael.web.test.thread;
 
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -31,7 +30,8 @@ public class OneThreadPlus {
         }
 
         try {
-            TimeUnit.SECONDS.sleep(1);
+//            TimeUnit.SECONDS.sleep(1);
+            Thread.sleep(1);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

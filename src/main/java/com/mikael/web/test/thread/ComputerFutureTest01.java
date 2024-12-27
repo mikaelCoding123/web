@@ -2,12 +2,12 @@ package com.mikael.web.test.thread;
 
 import org.springframework.scheduling.concurrent.CustomizableThreadFactory;
 
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
 
 public class ComputerFutureTest01 {
     private static final ExecutorService POOL = Executors.newFixedThreadPool(4, new CustomizableThreadFactory("SbxxService-pool-"));
@@ -18,7 +18,7 @@ public class ComputerFutureTest01 {
             POOL.execute(new Runnable() {
                 @Override
                 public void run() {
-                    sleep(2, TimeUnit.SECONDS);
+                    sleep(2);
                 }
             });
 
@@ -26,22 +26,18 @@ public class ComputerFutureTest01 {
             POOL.execute(new Runnable() {
                 @Override
                 public void run() {
-                    sleep(3, TimeUnit.SECONDS);
+                    sleep(3);
                 }
             });
         }
-        try {
-            POOL.shutdown();
-            if (POOL.awaitTermination(1, TimeUnit.DAYS)) {
-                System.out.println("====================");
-            }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        POOL.shutdown();
+//            if (POOL.awaitTermination(1L, TimeUnit.SECONDS)) {
+//                System.out.println("====================");
+//            }
 
     }
 
-    private static void sleep(int i, TimeUnit seconds) {
+    private static void sleep(int i) {
         try {
             Thread.sleep(i * 1000);
         } catch (InterruptedException e) {

@@ -9,16 +9,21 @@ import com.mikael.web.service.Imp.Test01ServiceImp;
 import com.mikael.web.service.Imp.Test02ServiceImp;
 import com.mikael.web.service.Test02Service;
 import com.mikael.web.utils.result.ResultUtil;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.websocket.server.PathParam;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.MDC;
 import org.springframework.context.ApplicationContext;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.util.Assert;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -37,6 +42,7 @@ public class Test01Action {
     private final ApplicationContext applicationContext;
 
     private final Test02Service test02Service;
+    private final RestTemplate restTemplate;
 
     @RequestMapping(value = "/test01", method = RequestMethod.GET)
     public String test01() {
@@ -59,7 +65,7 @@ public class Test01Action {
     //post 请求
     @RequestMapping(value = "/postTest", method = RequestMethod.POST)
     public Result postTest(@Validated Admin admin) {
-        Optional.ofNullable(admin).orElseThrow();
+        Optional.ofNullable(admin).orElseThrow(() -> new RuntimeException("admin is null"));
         log.info(admin.toString());
         return ResultUtil.success();
     }
@@ -86,5 +92,23 @@ public class Test01Action {
         return ResultUtil.success();
     }
 
+
+    //
+    @RequestMapping(value = "/test04", method = RequestMethod.GET)
+    public ResponseEntity test04() {
+        ResponseEntity.status(HttpStatus.BAD_GATEWAY);
+        return ResponseEntity.ok("");
+
+
+
+    }
+
+    //远程调用
+    @RequestMapping(value = "/test05", method = RequestMethod.GET)
+    public Result test05() {
+        log.info("-----------------"+ MDC.get("traceId"));
+        ResponseEntity<ResponseEntity> forEntity = restTemplate.getForEntity("http://localhost:8090/test01/test04", ResponseEntity.class);
+        return ResultUtil.success(forEntity);
+    }
 
 }

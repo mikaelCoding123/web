@@ -13,7 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.web.socket.config.annotation.EnableWebSocket;
 
-import java.io.Serial;
+//import java.io.Serial;
 import java.io.Serializable;
 
 /**
@@ -23,7 +23,7 @@ import java.io.Serializable;
 @SpringBootApplication
 public class WebApplication implements Serializable {
 
-    @Serial//jdk14以后开始
+//    @Serial//jdk14以后开始
     private final static long serialVersionUID = 6961728318907695402L;
     private static final Logger LOG = LogManager.getLogger();
 

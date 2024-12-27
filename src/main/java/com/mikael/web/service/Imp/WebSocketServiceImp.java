@@ -6,6 +6,7 @@ import jakarta.websocket.OnOpen;
 import jakarta.websocket.Session;
 import jakarta.websocket.server.ServerEndpoint;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
@@ -27,6 +28,16 @@ public class WebSocketServiceImp {
         log.info(session.getId() +"onMessage" + message);
 
 
+    }
+
+    public void onSendMessage(String message, Session session) {
+
+    session.getAsyncRemote().sendText("1111", new jakarta.websocket.SendHandler() {
+        @Override
+        public void onResult(jakarta.websocket.SendResult sendResult) {
+            log.info("sendResult" + sendResult.isOK());
+        }
+    });
     }
 
 

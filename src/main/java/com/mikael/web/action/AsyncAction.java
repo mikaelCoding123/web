@@ -3,14 +3,12 @@ package com.mikael.web.action;
 
 import com.mikael.web.utils.result.Result;
 import com.mikael.web.utils.result.ResultUtil;
-import org.apache.logging.log4j.LogManager;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.context.request.async.DeferredResult;
 import org.springframework.web.context.request.async.WebAsyncTask;
 
 import java.util.concurrent.Callable;
@@ -21,7 +19,7 @@ import java.util.concurrent.Callable;
 @RequestMapping("/asy")
 public class AsyncAction {
 
-    private static final Logger log = LoggerFactory.getLogger(AsyncAction.class);
+    protected final Log log = LogFactory.getLog(this.getClass());
 
     @RequestMapping(value = "/test01", method = RequestMethod.GET)
     public Callable<Result> test01() {
@@ -51,6 +49,7 @@ public class AsyncAction {
 
         return resultWebAsyncTask;
     }
+
     @GetMapping("/test03")
     public Result test03() {
         synchronized (this) {
@@ -61,14 +60,14 @@ public class AsyncAction {
 
         return ResultUtil.success();
     }
-    private void save(){
+
+    private void save() {
         try {
             Thread.sleep(200);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
-
 
 
 }
