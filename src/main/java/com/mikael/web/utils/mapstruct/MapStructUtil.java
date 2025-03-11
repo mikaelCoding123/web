@@ -2,6 +2,7 @@ package com.mikael.web.utils.mapstruct;
 
 import cn.hutool.core.lang.Snowflake;
 
+import java.math.BigDecimal;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class MapStructUtil {
@@ -13,6 +14,8 @@ public class MapStructUtil {
         }
         Snowflake snowflake = new Snowflake();
         System.out.println(snowflake.nextIdStr());
+        System.out.println(Long.MAX_VALUE);
+
 
 
     }

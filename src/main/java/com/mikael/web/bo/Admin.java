@@ -1,12 +1,14 @@
 package com.mikael.web.bo;
 
 
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.Size;
 
+//引入正确的类
+//import javax.validation.constraints.Size;
 
 @AllArgsConstructor
 @NoArgsConstructor

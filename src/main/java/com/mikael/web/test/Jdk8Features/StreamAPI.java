@@ -20,6 +20,9 @@ public class StreamAPI {
         hashMap.put("liu", 98);
         hashMap.put("liu", 111);
         List<String> list = Arrays.asList("126", "2318", "1313", "sfsfsf", "化", "126");
+        Iterator<String> iterator = list.iterator();
+
+
         List<User> objects =
                 Arrays.asList(
                         new User(12, "hua", 89),

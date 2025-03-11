@@ -11,12 +11,12 @@ public class ResultUtil {
         serviceResult.setCode(integer);
         serviceResult.setMsg(msg);
         serviceResult.setData(o);
-        if (MDC.get("traceId") == null) {
-            serviceResult.setTraceId("1234567890");
-        } else {
-            serviceResult.setTraceId(MDC.get("traceId"));
-        }
-        return serviceResult;
+//        if (MDC.get("traceId") == null) {
+//            serviceResult.setTraceId("1234567890");
+//        } else {
+//            serviceResult.setTraceId(MDC.get("traceId"));
+//        }
+        return  MDC.get("traceId") == null ? serviceResult.setTraceId("1234567890") : serviceResult.setTraceId(MDC.get("traceId"));
     }
 
     public static Result error() {

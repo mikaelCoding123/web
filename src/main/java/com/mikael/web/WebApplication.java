@@ -25,6 +25,7 @@ public class WebApplication implements Serializable {
 
 //    @Serial//jdk14以后开始
     private final static long serialVersionUID = 6961728318907695402L;
+
     private static final Logger LOG = LogManager.getLogger();
 
     public static void main(String[] args) {

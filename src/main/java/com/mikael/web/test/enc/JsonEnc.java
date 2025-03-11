@@ -16,7 +16,8 @@ public class JsonEnc {
         admin.setPassword("123456");
         //加密
         DESede deSede = new DESede();
-
+        byte[] s = deSede.encrypt("123456");
+        System.out.println(s);
 
 
     }
