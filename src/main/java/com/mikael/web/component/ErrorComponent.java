@@ -8,6 +8,7 @@ import org.springframework.boot.web.server.ErrorPageRegistry;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.Locale;
 
 
@@ -25,6 +26,11 @@ public class ErrorComponent implements ErrorPageRegistrar {
 
 
     public static void main(String[] args) {
+        int i=0;
+        int j=i;
+        j=i++ +j;
+        System.out.println(j);
+
         System.out.println(IdUtil.fastSimpleUUID().toLowerCase());
     }
 }
