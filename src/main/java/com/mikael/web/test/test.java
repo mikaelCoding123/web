@@ -5,6 +5,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.Arrays;
+import java.util.HashMap;
 
 class test {
 
@@ -30,6 +32,21 @@ class test {
             }).run();
         }
 
+    }
+
+
+
+
+
+    public int ttest(int[] arrays){
+        for (int array : arrays) {
+
+        }
+
+
+
+
+        return 0;
     }
 
 
