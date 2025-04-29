@@ -1,22 +1,28 @@
 package com.mikael.web.action;
 
 
-import com.mikael.web.utils.exception.BizException;
 import com.mikael.web.utils.result.Result;
-import lombok.AllArgsConstructor;
+import com.mikael.web.utils.result.ResultUtil;
+import jakarta.annotation.Resource;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-
-@AllArgsConstructor
+@Slf4j
 @RestController
 @RequestMapping("/redis")
 public class Redis01Action {
 
-    @RequestMapping(value = "/test01",method = RequestMethod.GET)
-    public Result test(){
+    @Resource
+    private RedisTemplate redisTemplate;
 
-        throw new BizException("错误");
+    @RequestMapping(value = "/test01", method = RequestMethod.GET)
+    public Result test() {
+        redisTemplate.opsForValue().set("2", "hua");
+        log.info((String) redisTemplate.opsForValue().get("2"));
+
+        return ResultUtil.success();
     }
 }
