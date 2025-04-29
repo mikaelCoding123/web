@@ -28,11 +28,17 @@
     </scm>
     <properties>
         <java.version>21</java.version>
+        <drools.version>9.44.0.Final</drools.version>
     </properties>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
 
         <dependency>
@@ -147,6 +153,23 @@
             </plugin>
         </plugins>
     </build>
+    <repositories>
+        <repository>
+            <!--远程仓库唯一标识符。用来匹配在settings.xml文件中配置的server.id -->
+            <id>alimaven</id>
+            <!--远程仓库名称 -->
+            <name>aliyun maven</name>
+            <url>https://maven.aliyun.com/nexus/content/repositories/central/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <!-- 用于定位和排序构件的仓库布局类型。可以是default或者legacy -->
+            <layout>default</layout>
+        </repository>
+    </repositories>
 
 
 </project>
