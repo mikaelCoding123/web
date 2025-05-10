@@ -2,7 +2,7 @@ package com.mikael.web.action;
 
 import com.mikael.web.service.Test02Service;
 import com.mikael.web.utils.exception.BizException;
-import com.mikael.web.utils.result.Result;
+import com.mikael.web.utils.result.ServiceResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
@@ -21,13 +21,13 @@ public class Test02Action {
 
     @RequestMapping(value = "/test01", method = RequestMethod.GET)
     @ResponseStatus(code = HttpStatus.OK)
-    public Result test01() {
+    public ServiceResult test01() {
 
         log.info("test01===="+Thread.currentThread());
         log.info("test01======" + MDC.get("traceId"));
-        Result result = test02Service.test02();
-        System.out.println(result);
-        Result build = result.builder().code(4893418).build();
+        ServiceResult serviceResult = test02Service.test02();
+        System.out.println(serviceResult);
+        ServiceResult build = serviceResult.builder().code(4893418).build();
 
         build.setCode(453).setMsg("fjklasf").setData("fjiw222222").setTraceId(MDC.get("traceId"));
 
@@ -35,10 +35,10 @@ public class Test02Action {
     }
 
     @RequestMapping(value = "/test02", method = RequestMethod.GET)
-    public Result test02() throws InterruptedException {
-        Result result = test02Service.test02();
+    public ServiceResult test02() throws InterruptedException {
+        ServiceResult serviceResult = test02Service.test02();
         Thread.sleep(10000);
-        return result;
+        return serviceResult;
     }
 
     @RequestMapping(value = "/exception", method = RequestMethod.GET)

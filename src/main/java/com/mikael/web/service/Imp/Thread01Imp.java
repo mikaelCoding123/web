@@ -1,7 +1,7 @@
 package com.mikael.web.service.Imp;
 
 import com.mikael.web.test.bo.User;
-import com.mikael.web.utils.result.Result;
+import com.mikael.web.utils.result.ServiceResult;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.concurrent.Callable;
@@ -19,7 +19,7 @@ public class Thread01Imp implements Callable{
 
 
     @Override
-    public Result call() throws Exception {
+    public ServiceResult call() throws Exception {
         log.info(user.getName()+"====="+integer);
 
         return null;

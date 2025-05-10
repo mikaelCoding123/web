@@ -1,7 +1,7 @@
 package com.mikael.web.action;
 
 
-import com.mikael.web.utils.result.Result;
+import com.mikael.web.utils.result.ServiceResult;
 import com.mikael.web.utils.result.ResultUtil;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -22,7 +22,7 @@ public class AsyncAction {
     protected final Log log = LogFactory.getLog(this.getClass());
 
     @RequestMapping(value = "/test01", method = RequestMethod.GET)
-    public Callable<Result> test01() {
+    public Callable<ServiceResult> test01() {
 
         log.info("asy/test01================");
         return () -> {
@@ -34,8 +34,8 @@ public class AsyncAction {
     }
 
     @GetMapping("/test02")
-    public WebAsyncTask<Result> test02() {
-        WebAsyncTask<Result> resultWebAsyncTask = new WebAsyncTask<>(() -> {
+    public WebAsyncTask<ServiceResult> test02() {
+        WebAsyncTask<ServiceResult> resultWebAsyncTask = new WebAsyncTask<>(() -> {
             Thread.sleep(1000);
 
             return ResultUtil.success();
@@ -51,7 +51,7 @@ public class AsyncAction {
     }
 
     @GetMapping("/test03")
-    public Result test03() {
+    public ServiceResult test03() {
         synchronized (this) {
             log.info("shiel");
         }

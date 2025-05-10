@@ -1,11 +1,16 @@
 package com.mikael.web.filterAndInterceptor.mdc;
 
 import cn.hutool.core.lang.UUID;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mikael.web.test.bo.User;
 import io.micrometer.common.util.StringUtils;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jdk.security.jarsigner.JarSigner;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.MDC;
+import org.springframework.boot.json.JacksonJsonParser;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -41,12 +46,16 @@ public class WebLogMdcHandlerInterceptor implements HandlerInterceptor {
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
         // 请求处理之后进行调用，但是在视图被渲染之前（Controller方法调用之后）
+        log.info("9999999999999999");
+
     }
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws JsonProcessingException {
         String str = "1234";
-        System.out.println(str.indexOf("8"));
+        System.out.println(str.indexOf("3"));
+        ObjectMapper objectMapper = new ObjectMapper();
+
     }
 
 

@@ -6,7 +6,7 @@ import com.mikael.web.component.aop.Test;
 import com.mikael.web.service.Imp.ModeServiceImp;
 import com.mikael.web.service.Test02Service;
 import com.mikael.web.utils.ServiceEnum;
-import com.mikael.web.utils.result.Result;
+import com.mikael.web.utils.result.ServiceResult;
 import com.mikael.web.utils.result.ResultUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +31,7 @@ public class Test03Action implements Serializable {
     private Test02Service test02Service;
 
     @RequestMapping(value = "/test01", method = RequestMethod.GET)
-    public Result test01() {
+    public ServiceResult test01() {
         log.info(applicationContext.getBeanDefinitionCount() + "");
         ModeServiceImp ba = applicationContext.getBean("ModeServiceImp", ModeServiceImp.class);
         ba.test01();
@@ -43,7 +43,7 @@ public class Test03Action implements Serializable {
      * 责任链
      */
     @RequestMapping(value = "/test02/zenrenlian", method = RequestMethod.GET)
-    public Result test02() {
+    public ServiceResult test02() {
         test02Service.test03();
         return ResultUtil.success();
     }
@@ -53,7 +53,7 @@ public class Test03Action implements Serializable {
      */
     @RequestMapping(value = "/enums", method = RequestMethod.POST)
     @Test(value ="1234")
-    public Result enums(ModeType modeType) {
+    public ServiceResult enums(ModeType modeType) {
         ServiceEnum.valueOf(modeType.getModeType()).getService().sayHello(modeType.getObject().toString());
         return ResultUtil.success();
     }

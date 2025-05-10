@@ -1,6 +1,6 @@
 package com.mikael.web.service.Imp;
 
-import com.mikael.web.utils.result.Result;
+import com.mikael.web.utils.result.ServiceResult;
 import com.mikael.web.service.Test01Service;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +12,7 @@ public class Test01ServiceImp implements Test01Service {
     }
 
     @Override
-    public Result test02() {
+    public ServiceResult test02() {
         return null;
     }
 }

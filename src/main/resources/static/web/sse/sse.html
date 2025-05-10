@@ -9,24 +9,24 @@
 </head>
 <body>
 <div>sse测试</div>
-<div id="result"></div>
+<div id="serviceResult"></div>
 </body>
 </html>
 <script>
     //实际开发中id参数可以做成变量传参
     var source = new EventSource('http://127.0.0.1:8090/sse/subscribe?id=123');
-    var result=document.getElementById('result');
+    var serviceResult=document.getElementById('serviceResult');
     // 监听到服务端发来的消息回调
     source.onmessage = function (event) {
-        text = result.innerText;
+        text = serviceResult.innerText;
         text += '\n' + event.data;
-        result.innerText = text;
+        serviceResult.innerText = text;
     };
     //连接上服务端回调
     source.onopen = function (event) {
-        text = result.innerText;
+        text = serviceResult.innerText;
         text += '\n 开启: ';
         console.log(event);
-        result.innerText = text;
+        serviceResult.innerText = text;
     };
 </script>

@@ -6,8 +6,8 @@ import org.slf4j.MDC;
 
 public class ResultUtil {
 
-    public static Result put(Integer integer, String msg, Object o) {
-        Result serviceResult = new Result();
+    public static ServiceResult put(Integer integer, String msg, Object o) {
+        ServiceResult serviceResult = new ServiceResult();
         serviceResult.setCode(integer);
         serviceResult.setMsg(msg);
         serviceResult.setData(o);
@@ -19,24 +19,24 @@ public class ResultUtil {
         return  MDC.get("traceId") == null ? serviceResult.setTraceId("1234567890") : serviceResult.setTraceId(MDC.get("traceId"));
     }
 
-    public static Result error() {
+    public static ServiceResult error() {
         return put(Integer.getInteger(CodeEnum.ERROR.getCode()), CodeEnum.ERROR.getMsg(), null);
     }
 
-    public static Result error(Object o) {
+    public static ServiceResult error(Object o) {
         return put(Integer.getInteger(CodeEnum.ERROR.getCode()), CodeEnum.ERROR.getMsg(), o);
 
     }
 
-    public static Result success() {
+    public static ServiceResult success() {
         return put(Integer.getInteger(CodeEnum.SUCCESS200.getCode()), CodeEnum.SUCCESS.getMsg(), null);
     }
 
-    public static Result success(@NotNull Object o) {
+    public static ServiceResult success(@NotNull Object o) {
         return put(Integer.getInteger(CodeEnum.SUCCESS200.getCode()), CodeEnum.SUCCESS.getMsg(), o);
     }
 
-    public static Result put(CodeEnum codeEnum, Object o) {
+    public static ServiceResult put(CodeEnum codeEnum, Object o) {
         return put(Integer.getInteger(codeEnum.getCode()), codeEnum.getMsg(), o);
     }
 

@@ -11,7 +11,7 @@ import org.slf4j.MDC;
 @NoArgsConstructor
 @Builder
 @Accessors(chain = true)
-public  class Result {
+public  class ServiceResult {
 
 //    private String traceId= MDC.getCopyOfContextMap().get("traceId");
     private String traceId;
