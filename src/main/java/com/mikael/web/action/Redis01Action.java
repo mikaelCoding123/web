@@ -2,6 +2,7 @@ package com.mikael.web.action;
 
 
 import com.mikael.web.utils.result.ServiceResult;
+
 import com.mikael.web.utils.result.ResultUtil;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
@@ -20,6 +21,7 @@ public class Redis01Action {
 
     @RequestMapping(value = "/test01", method = RequestMethod.GET)
     public ServiceResult test() {
+
         redisTemplate.opsForValue().set("2", "hua");
         log.info((String) redisTemplate.opsForValue().get("2"));
 
