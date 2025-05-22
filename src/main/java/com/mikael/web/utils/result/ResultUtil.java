@@ -11,6 +11,7 @@ public class ResultUtil {
         serviceResult.setCode(integer);
         serviceResult.setMsg(msg);
         serviceResult.setData(o);
+        serviceResult.setTimestamp(System.currentTimeMillis());
 //        if (MDC.get("traceId") == null) {
 //            serviceResult.setTraceId("1234567890");
 //        } else {
