@@ -9,6 +9,7 @@ import com.mikael.web.service.Imp.Test01ServiceImp;
 import com.mikael.web.service.Imp.Test02ServiceImp;
 import com.mikael.web.service.Test02Service;
 import com.mikael.web.utils.result.ResultUtil;
+import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.websocket.server.PathParam;
 import lombok.AllArgsConstructor;
@@ -19,10 +20,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.Assert;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -70,10 +68,29 @@ public class Test01Action {
         return ResultUtil.success();
     }
 
+    //http://127.0.0.1:8060/test01/test03/esfsd
+    @RequestMapping(value = "/test03/{type}", method = RequestMethod.GET)
+    public Result test03(@PathVariable("type") String type) {
+        log.info("type==" + type);
+        return ResultUtil.success();
+    }
 
-    //遇到特殊字符的时候怎么处理
-    @RequestMapping(value = "/test03", method = RequestMethod.GET)
-    public Result test03(@PathParam("type") String type) {
+    //获取到url上的参数
+    //http://127.0.0.1:8060/test01/test033?type=333#ujfhks
+    //不能是特殊字符，且不能用postman等工具测试
+    //最好不要用特殊字符，要用就转义一下再传给后端（可以用-跟_） %23 代表  #  ， %24 代表 $ , %7 代表 |
+    @RequestMapping(value = "/test033", method = RequestMethod.GET)
+    public Result test033(@RequestParam("type") String type) {
+        log.info("type==" + type);
+
+        return ResultUtil.success();
+    }
+
+
+    @RequestMapping(value = "/test034", method = RequestMethod.GET)
+    public Result test034(HttpServletRequest request) {
+        String type = request.getParameter("type");
+
         log.info("type==" + type);
 
         return ResultUtil.success();

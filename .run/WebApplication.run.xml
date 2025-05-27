@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="WebApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" singleton="false" nameIsGenerated="true">
+    <envs>
+      <env name="server.port" value="8070" />
+    </envs>
+    <module name="web (1)" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="com.mikael.web.WebApplication" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
