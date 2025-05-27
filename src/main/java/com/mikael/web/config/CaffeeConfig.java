@@ -1,11 +1,15 @@
 package com.mikael.web.config;
 
-import com.github.benmanes.caffeine.cache.Cache;
+import ch.qos.logback.core.util.TimeUtil;
 import com.github.benmanes.caffeine.cache.Caffeine;
+import io.micrometer.core.instrument.util.TimeUtils;
+import org.springframework.cache.CacheManager;
+import org.springframework.cache.caffeine.CaffeineCacheManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.time.Duration;
+import java.util.Timer;
 
 
 /**
@@ -17,10 +21,13 @@ import java.time.Duration;
 @Configuration
 public class CaffeeConfig {
 
-    @Bean("caffeeman")
-    public Cache<Object, Object> caffeeConfig() {
-        return Caffeine.newBuilder().expireAfterAccess(Duration.ofSeconds(60l)).softValues().initialCapacity(100).maximumSize(10000l).build();
-
+    @Bean
+    public CacheManager cacheManager() {
+        CaffeineCacheManager cacheManager = new CaffeineCacheManager("aa");
+        cacheManager.setCaffeine(Caffeine.newBuilder()
+                .maximumSize(1000)
+                .expireAfterWrite(Duration.ofSeconds(10)));
+        return cacheManager;
     }
 
 }

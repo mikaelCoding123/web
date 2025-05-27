@@ -5,9 +5,11 @@ import com.mikael.web.utils.result.Result;
 import com.mikael.web.utils.result.ResultUtil;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
@@ -19,10 +21,35 @@ public class Redis01Action {
     private RedisTemplate redisTemplate;
 
     @RequestMapping(value = "/test01", method = RequestMethod.GET)
-    public Result test() {
+    public Result test() throws InterruptedException {
         redisTemplate.opsForValue().set("2", "hua");
         log.info((String) redisTemplate.opsForValue().get("2"));
-
         return ResultUtil.success();
     }
+
+    @RequestMapping(value = "/test02", method = RequestMethod.GET)
+    public Result test02() {
+        redisTemplate.opsForValue().set("2", "hua");
+        log.info((String) redisTemplate.opsForValue().get("2"));
+        System.out.println();
+        return ResultUtil.success();
+    }
+
+    // https://zhuanlan.zhihu.com/p/385515782
+    //    value的值要跟config中的 new CaffeineCacheManager("aa") 相同
+    @Cacheable(value = "aa")
+    @RequestMapping(value = "/caffeine01", method = RequestMethod.GET)
+    public Result test03() throws InterruptedException {
+        Thread.sleep(2000);
+        return ResultUtil.success("855456");
+    }
+
+    //    这个id相当于 map中的key
+    @Cacheable(value = "aa", key = "#id")
+    @RequestMapping(value = "/caffeine02", method = RequestMethod.GET)
+    public Result test04(@RequestParam("id") String id) throws InterruptedException {
+        Thread.sleep(2000);
+        return ResultUtil.success("test04.....");
+    }
+
 }
