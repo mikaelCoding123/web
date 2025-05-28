@@ -6,7 +6,6 @@ import com.mikael.web.utils.result.ResultUtil;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,7 +46,7 @@ public class Redis01Action {
     }
 
     //    这个id相当于 map中的key
-    @CacheEvict(value = "",key = "id") // 删除缓存
+    @CacheEvict(value = "aa",key = "id") // 删除缓存
     @Cacheable(value = "aa", key = "#id")
     @RequestMapping(value = "/caffeine02", method = RequestMethod.GET)
     public Result test04(@RequestParam("id") String id) throws InterruptedException {

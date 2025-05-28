@@ -18,13 +18,6 @@ import java.time.Duration;
 @Configuration
 public class CaffeeConfig {
 
-    @Bean
-    public CacheManager cacheManager() {
-        CaffeineCacheManager cacheManager = new CaffeineCacheManager("aa");
-        cacheManager.setCaffeine(Caffeine.newBuilder()
-                .maximumSize(1000).expireAfterAccess(Duration.ofSeconds(15))
-                .expireAfterWrite(Duration.ofSeconds(20)));
-        return cacheManager;
-    }
+
 
 }
