@@ -41,8 +41,8 @@ public class AppConfig {
     @Bean
     public RedissonClient redisson(){
         Config config = new Config();
-        config.useSingleServer().setAddress("redis://localhost:6379").setDatabase(1).setTimeout(30);
-        return Redisson.create(config);
+//        config.useSingleServer().setAddress("redis://127.0.0.1:6379").setDatabase(0).setTimeout(30);
+        return Redisson.create();
     }
 
 
