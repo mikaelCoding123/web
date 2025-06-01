@@ -1,25 +1,36 @@
 package com.mikael.web.config;
 
 import com.github.benmanes.caffeine.cache.Caffeine;
+import com.mikael.web.filterAndInterceptor.LoginFilter;
 import org.redisson.Redisson;
 import org.redisson.api.RedissonClient;
 import org.redisson.config.Config;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.caffeine.CaffeineCacheManager;
+import org.springframework.cache.support.CompositeCacheManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.context.annotation.Primary;
+import org.springframework.data.redis.cache.RedisCacheConfiguration;
+import org.springframework.data.redis.cache.RedisCacheManager;
+import org.springframework.data.redis.connection.RedisConnectionFactory;
+import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
+import org.springframework.data.redis.serializer.RedisSerializationContext;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.socket.server.standard.ServerEndpointExporter;
 
 import java.time.Duration;
+import java.util.Arrays;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @Configuration
 public class AppConfig {
 
     @Bean
     public RestTemplate init() {
-       return new RestTemplate();
+        return new RestTemplate();
     }
 
     @Bean
@@ -27,22 +38,75 @@ public class AppConfig {
         return new ServerEndpointExporter();
     }
 
-//    caffeine
+
+    // 二级缓存：Redis
+    @Bean
+    public RedisCacheManager redisCacheManager(RedisConnectionFactory factory) {
+        RedisCacheConfiguration config = RedisCacheConfiguration.defaultCacheConfig()
+                .serializeValuesWith(RedisSerializationContext.SerializationPair
+                        .fromSerializer(new GenericJackson2JsonRedisSerializer()))
+                .entryTtl(Duration.ofSeconds(100));  // 分布式缓存过期时间:ml-citation{ref="4,7" data="citationList"}
+        return RedisCacheManager.builder(factory).cacheDefaults(config).build();
+    }
+
+
+    //  一级缓存：caffeine
     @Bean
     public CacheManager cacheManager() {
-        CaffeineCacheManager cacheManager = new CaffeineCacheManager("aa");
-        cacheManager.setCaffeine(Caffeine.newBuilder()
-                .maximumSize(1000).expireAfterAccess(Duration.ofSeconds(15))
-                .expireAfterWrite(Duration.ofSeconds(20)));
+        Caffeine<Object, Object> caffeine = Caffeine.newBuilder()
+                .maximumSize(10000)
+                .expireAfterWrite(10, TimeUnit.SECONDS)
+                .recordStats();  // 开启统计:ml-citation{ref="2,9" data="citationList"}
+        return new CaffeineCacheManager("localCache", "hotData") {{
+            setCaffeine(caffeine);
+        }};
+    }
+
+
+    /**
+     *
+     *  @Bean
+     *   public Employee zhangSan() { return new Employee("张三"); }
+     *
+     *   @Bean
+     *   @Primary  // 优先注入此Bean
+     *   public Employee liSi() { return new Employee("李四"); }
+     *
+     *   在复杂场景（如多数据源、策略模式实现）中，可作为默认选择
+     *
+     */
+    // 组合多级缓存（Caffeine+Redis多级缓存配置）
+    @Primary//解决依赖注入冲突
+    @Bean
+    public CacheManager compositeCacheManager(
+            CaffeineCacheManager caffeineCacheManager,
+            RedisCacheManager redisCacheManager) {
+        List<CacheManager> managers = Arrays.asList(caffeineCacheManager, redisCacheManager);
+        CompositeCacheManager cacheManager = new CompositeCacheManager();
+        cacheManager.setCacheManagers(managers);
+        cacheManager.setFallbackToNoOpCache(false);  // 启用多级回退:ml-citation{ref="1,4" data="citationList"}
         return cacheManager;
     }
 
-//    redisson
+
+    //    redisson
     @Bean
-    public RedissonClient redisson(){
+    public RedissonClient redisson() {
         Config config = new Config();
 //        config.useSingleServer().setAddress("redis://127.0.0.1:6379").setDatabase(0).setTimeout(30);
         return Redisson.create();
+    }
+
+
+    //拦截器的注册
+    @Bean
+    public FilterRegistrationBean<LoginFilter> myFilter() {
+        FilterRegistrationBean<LoginFilter> bean = new FilterRegistrationBean<>();
+        bean.setFilter(new LoginFilter());
+        bean.addUrlPatterns("/*");
+        bean.setAsyncSupported(true);//支持异步操作
+        bean.setOrder(1);  // 设置执行顺序
+        return bean;
     }
 
 

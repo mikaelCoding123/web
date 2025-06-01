@@ -4,6 +4,8 @@ import lombok.*;
 import lombok.experimental.Accessors;
 import org.slf4j.MDC;
 
+import java.io.Serializable;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -11,7 +13,8 @@ import org.slf4j.MDC;
 @NoArgsConstructor
 @Builder
 @Accessors(chain = true)
-public  class Result {
+public  class Result implements Serializable {
+    private final static long serialVersionUID = 1L;
 
 //    private String traceId= MDC.getCopyOfContextMap().get("traceId");
     private String traceId;

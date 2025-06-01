@@ -7,6 +7,7 @@ import org.apache.logging.log4j.Logger;
 import org.slf4j.MDC;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.core.SpringVersion;
 import org.springframework.http.HttpStatus;
@@ -23,6 +24,7 @@ import java.io.Serializable;
 @EnableAsync
 @EnableCaching
 @SpringBootApplication
+@ServletComponentScan
 public class WebApplication implements Serializable {
 
 //    @Serial//jdk14以后开始

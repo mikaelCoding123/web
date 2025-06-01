@@ -5,6 +5,8 @@ import com.mikael.web.utils.result.Result;
 import com.mikael.web.utils.result.ResultUtil;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.async.WebAsyncTask;
 
 import java.util.concurrent.Callable;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Future;
 
 
 //https://mp.weixin.qq.com/s/r0fV4gnvFv2NfrL03LXEOw
@@ -67,6 +71,14 @@ public class AsyncAction {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    @Async
+    @RequestMapping(value = "/asy01",method = RequestMethod.GET)
+    public CompletableFuture<Result> asy01() throws InterruptedException {
+        Thread.sleep(4_000L);
+
+        return CompletableFuture.completedFuture(ResultUtil.success());
     }
 
 
