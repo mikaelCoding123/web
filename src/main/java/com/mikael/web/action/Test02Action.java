@@ -21,7 +21,7 @@ public class Test02Action {
 
     @RequestMapping(value = "/test01", method = RequestMethod.GET)
     @ResponseStatus(code = HttpStatus.OK)
-    public Result test01() {
+    public Result test01() throws InterruptedException {
 
         log.info("test01===="+Thread.currentThread());
         log.info("test01======" + MDC.get("traceId"));
