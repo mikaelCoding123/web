@@ -6,14 +6,17 @@ import org.redisson.Redisson;
 import org.redisson.api.RedissonClient;
 import org.redisson.config.Config;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
+import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.cache.caffeine.CaffeineCache;
 import org.springframework.cache.caffeine.CaffeineCacheManager;
+import org.springframework.cache.support.AbstractCacheManager;
 import org.springframework.cache.support.CompositeCacheManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
-import org.springframework.data.redis.cache.RedisCacheConfiguration;
-import org.springframework.data.redis.cache.RedisCacheManager;
+import org.springframework.data.redis.cache.*;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializationContext;
@@ -22,10 +25,13 @@ import org.springframework.web.socket.server.standard.ServerEndpointExporter;
 
 import java.time.Duration;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 
 @Configuration
+@EnableCaching
 public class AppConfig {
 
     @Bean
@@ -40,27 +46,45 @@ public class AppConfig {
 
 
     // 二级缓存：Redis
+//    @Bean
+//    public RedisCacheManager redisCacheManager(RedisConnectionFactory factory) {
+//        RedisCacheConfiguration config = RedisCacheConfiguration.defaultCacheConfig()
+//                .serializeValuesWith(RedisSerializationContext.SerializationPair
+//                        .fromSerializer(new GenericJackson2JsonRedisSerializer()))
+//                .entryTtl(Duration.ofSeconds(100));  // 分布式缓存过期时间:ml-citation{ref="4,7" data="citationList"}
+//        return RedisCacheManager.builder(factory).cacheDefaults(config).build();
+//    }
+
+
+    @Bean
+    public CaffeineCacheManager caffeineCacheManager() {
+        CaffeineCacheManager manager = new CaffeineCacheManager();
+        manager.setCaffeine(Caffeine.newBuilder()
+                .expireAfterWrite(5, TimeUnit.MINUTES)
+                .maximumSize(1000));
+        return manager;
+    }
+
     @Bean
     public RedisCacheManager redisCacheManager(RedisConnectionFactory factory) {
-        RedisCacheConfiguration config = RedisCacheConfiguration.defaultCacheConfig()
-                .serializeValuesWith(RedisSerializationContext.SerializationPair
-                        .fromSerializer(new GenericJackson2JsonRedisSerializer()))
-                .entryTtl(Duration.ofSeconds(100));  // 分布式缓存过期时间:ml-citation{ref="4,7" data="citationList"}
-        return RedisCacheManager.builder(factory).cacheDefaults(config).build();
+        return RedisCacheManager.builder(factory)
+                .cacheDefaults(RedisCacheConfiguration.defaultCacheConfig().disableCachingNullValues()
+                        .entryTtl(Duration.ofHours(1)))
+                .build();
     }
 
-
-    //  一级缓存：caffeine
+    @Primary
     @Bean
-    public CacheManager cacheManager() {
-        Caffeine<Object, Object> caffeine = Caffeine.newBuilder()
-                .maximumSize(10000)
-                .expireAfterWrite(10, TimeUnit.SECONDS)
-                .recordStats();  // 开启统计:ml-citation{ref="2,9" data="citationList"}
-        return new CaffeineCacheManager("localCache", "hotData") {{
-            setCaffeine(caffeine);
-        }};
+    public CompositeCacheManager compositeCacheManager(
+            CaffeineCacheManager caffeineManager,
+            RedisCacheManager redisManager) {
+        List<CacheManager> managers = Arrays.asList(caffeineManager, redisManager);
+        CompositeCacheManager compositeManager = new CompositeCacheManager();
+        compositeManager.setCacheManagers(managers);
+        compositeManager.setFallbackToNoOpCache(true);
+        return compositeManager;
     }
+
 
 
     /**
@@ -75,18 +99,18 @@ public class AppConfig {
      *   在复杂场景（如多数据源、策略模式实现）中，可作为默认选择
      *
      */
-    // 组合多级缓存（Caffeine+Redis多级缓存配置）
-    @Primary//解决依赖注入冲突
-    @Bean
-    public CacheManager compositeCacheManager(
-            CaffeineCacheManager caffeineCacheManager,
-            RedisCacheManager redisCacheManager) {
-        List<CacheManager> managers = Arrays.asList(caffeineCacheManager, redisCacheManager);
-        CompositeCacheManager cacheManager = new CompositeCacheManager();
-        cacheManager.setCacheManagers(managers);
-        cacheManager.setFallbackToNoOpCache(false);  // 启用多级回退:ml-citation{ref="1,4" data="citationList"}
-        return cacheManager;
-    }
+//    // 组合多级缓存（Caffeine+Redis多级缓存配置）
+//    @Primary//解决依赖注入冲突
+//    @Bean
+//    public CacheManager compositeCacheManager(
+//            CaffeineCacheManager caffeineCacheManager,
+//            RedisCacheManager redisCacheManager) {
+//        List<CacheManager> managers = Arrays.asList(caffeineCacheManager, redisCacheManager);
+//        CompositeCacheManager cacheManager = new CompositeCacheManager();
+//        cacheManager.setCacheManagers(managers);
+//        cacheManager.setFallbackToNoOpCache(false);  // 启用多级回退:ml-citation{ref="1,4" data="citationList"}
+//        return cacheManager;
+//    }
 
 
     //    redisson

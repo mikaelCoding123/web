@@ -19,7 +19,7 @@ import org.springframework.web.socket.config.annotation.EnableWebSocket;
 import java.io.Serializable;
 
 /**
- * jdk21
+ * jdk17
  */
 @EnableAsync
 @EnableCaching

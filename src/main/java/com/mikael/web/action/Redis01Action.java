@@ -43,9 +43,13 @@ public class Redis01Action {
 
     // https://zhuanlan.zhihu.com/p/385515782
     //    value的值要跟config中的 new CaffeineCacheManager("aa") 相同
-    @Cacheable(value = "aa")
+    // cacheNames是存redis里面的key+后面的key的值 例如 est::12
+    // 当cacheNames 为数组的时候，reids里面会存有2条
+    // cacheManager的值是config里面@Bean对应的方法名
+    //sync=false时表示该缓存为异步
+    @Cacheable(cacheNames = "compositeCacheManager",key = "#id",cacheManager = "compositeCacheManager")
     @RequestMapping(value = "/caffeine01", method = RequestMethod.GET)
-    public Result test03() throws InterruptedException {
+    public Result test03(@RequestParam("id") String id) throws InterruptedException {
         Thread.sleep(2000);
         return ResultUtil.success("855456");
     }
