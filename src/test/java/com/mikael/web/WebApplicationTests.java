@@ -1,5 +1,9 @@
 package com.mikael.web;
 
+import com.mikael.web.bo.Order;
+import com.mikael.web.service.PayWayService;
+import com.mikael.web.service.wxpay.WxPayService;
+import jakarta.annotation.Resource;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -12,8 +16,14 @@ import java.nio.file.StandardCopyOption;
 @SpringBootTest
 class WebApplicationTests {
 
+    @Resource
+    private com.mikael.web.service.wxpay.WxPayService wxPayService;
+
     @Test
     void contextLoads() {
+        Order order = new Order();
+        order.setOrder_status("3");
+        wxPayService.filter(order);
     }
 
 }

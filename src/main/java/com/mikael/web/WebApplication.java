@@ -48,7 +48,6 @@ public class WebApplication implements Serializable {
         System.out.println("Spring Version "+SpringVersion.getVersion());
         System.out.println("jdk version: "+System.getProperty("java.version"));
 
-        ResponseEntity<Result> resultResponseEntity = new ResponseEntity<>(HttpStatus.OK);
         SpringApplication.run(WebApplication.class, args);
 
 

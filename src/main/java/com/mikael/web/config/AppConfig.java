@@ -39,10 +39,10 @@ public class AppConfig {
         return new RestTemplate();
     }
 
-    @Bean
-    public ServerEndpointExporter test01ServiceImp() {
-        return new ServerEndpointExporter();
-    }
+//    @Bean
+//    public ServerEndpointExporter test01ServiceImp() {
+//        return new ServerEndpointExporter();
+//    }
 
 
     // 二级缓存：Redis
