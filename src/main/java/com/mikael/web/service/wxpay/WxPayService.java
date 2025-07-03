@@ -63,11 +63,9 @@ public class WxPayService extends PayFilterService implements PayWayService {
 
             }
 
-            System.out.println("sum===" + sum);
-            sum=BigDecimal.valueOf(0);
-        }
+    public Result WxPay(){
 
 
+        return null;
     }
-
 }
