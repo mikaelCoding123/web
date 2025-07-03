@@ -6,7 +6,6 @@ import com.mikael.web.utils.result.Result;
 import com.mikael.web.utils.result.ResultUtil;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -41,13 +40,23 @@ public class Redis01Action {
         return ResultUtil.success();
     }
 
+    @RequestMapping(value = "/test001", method = RequestMethod.GET)
+    public Result test001() {
+        redisTemplate.opsForValue().set("2", "hua");
+
+        log.info((String) redisTemplate.opsForValue().get("2"));
+        System.out.println();
+        return ResultUtil.success();
+    }
+
+
     // https://zhuanlan.zhihu.com/p/385515782
     //    value的值要跟config中的 new CaffeineCacheManager("aa") 相同
     // cacheNames是存redis里面的key+后面的key的值 例如 est::12
     // 当cacheNames 为数组的时候，reids里面会存有2条
     // cacheManager的值是config里面@Bean对应的方法名
     //sync=false时表示该缓存为异步
-    @Cacheable(cacheNames = "compositeCacheManager",key = "#id",cacheManager = "compositeCacheManager")
+    @Cacheable(cacheNames = "compositeCacheManager", key = "#id", cacheManager = "compositeCacheManager")
     @RequestMapping(value = "/caffeine01", method = RequestMethod.GET)
     public Result test03(@RequestParam("id") String id) throws InterruptedException {
         Thread.sleep(2000);
@@ -55,7 +64,7 @@ public class Redis01Action {
     }
 
     //    这个id相当于 map中的key
-    @CacheEvict(value = "aa",key = "#id") // 删除缓存
+    @CacheEvict(value = "aa", key = "#id") // 删除缓存
     @Cacheable(value = "aa", key = "#id")
     @RequestMapping(value = "/caffeine02", method = RequestMethod.GET)
     public Result test04(@RequestParam("id") String id) throws InterruptedException {
@@ -68,7 +77,6 @@ public class Redis01Action {
         Result result = test001ServiceImp.test02();
         return ResultUtil.success(result);
     }
-
 
 
 }

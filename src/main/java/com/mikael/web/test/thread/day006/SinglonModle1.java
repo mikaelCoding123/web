@@ -30,6 +30,7 @@ class SinglonModelTest {
                         if (SinglonModle1.getInstance() == SinglonModle1.getInstance()) {
                             System.out.println("满足多线程的单例");
                         }
+
                     },
                     String.valueOf(i))
                     .start();
