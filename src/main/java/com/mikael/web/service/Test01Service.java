@@ -3,8 +3,8 @@ package com.mikael.web.service;
 import com.mikael.web.utils.result.Result;
 
 public interface Test01Service {
-    String test01();
+    public String test01();
 
-    Result test02();
+    public Result test02();
 
 }

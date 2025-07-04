@@ -26,9 +26,9 @@ public class MDCUtils {
         stringStringHashMap.put("sex", "男");
         JWT jwt = JWT.create();
         jwt.setPayload("traceId", "12");
-        jwt.setKey(key.getBytes(StandardCharsets.UTF_8)).setExpiresAt(new Date(System.currentTimeMillis() + 1000));
+        jwt.setKey(key.getBytes(StandardCharsets.UTF_8)).setExpiresAt(new Date(System.currentTimeMillis()+1*1000));
         String sign = jwt.sign();
-        boolean t = JWT.of(sign).setKey(key.getBytes(StandardCharsets.UTF_8)).verify();
+         boolean t = JWT.of(sign).setKey(key.getBytes(StandardCharsets.UTF_8)).verify();
         JWTSigner hs256 = JWTSignerUtil.hs256(key.getBytes(StandardCharsets.UTF_8));
         String token = JWTUtil.createToken(stringStringHashMap, hs256);
         boolean verify = JWTUtil.verify(token, hs256);

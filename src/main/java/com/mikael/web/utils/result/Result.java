@@ -2,6 +2,7 @@ package com.mikael.web.utils.result;
 
 import lombok.*;
 import lombok.experimental.Accessors;
+import org.slf4j.MDC;
 
 import java.io.Serializable;
 
@@ -12,10 +13,10 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Builder
 @Accessors(chain = true)
-public class Result implements Serializable {
+public  class Result implements Serializable {
     private final static long serialVersionUID = 1L;
 
-    //    private String traceId= MDC.getCopyOfContextMap().get("traceId");
+//    private String traceId= MDC.getCopyOfContextMap().get("traceId");
     private String traceId;
     private Integer code;
     private String msg;

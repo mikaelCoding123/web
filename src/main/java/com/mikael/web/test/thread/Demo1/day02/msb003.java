@@ -50,6 +50,9 @@ public class msb003 {
                                 TimeUnit.SECONDS.sleep(3);
                             } catch (InterruptedException e) {
 
+                            } finally {
+                                /*lock.unlock();*/
+                                // 由与inerruptibly()没有锁的获得故发生异常错误
                             }
                             System.out.println("m2 end！！！");
                         });

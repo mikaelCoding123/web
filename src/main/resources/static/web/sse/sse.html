@@ -15,7 +15,7 @@
 <script>
     //实际开发中id参数可以做成变量传参
     var source = new EventSource('http://127.0.0.1:8090/sse/subscribe?id=123');
-    var result = document.getElementById('result');
+    var result=document.getElementById('result');
     // 监听到服务端发来的消息回调
     source.onmessage = function (event) {
         text = result.innerText;

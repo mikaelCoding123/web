@@ -10,7 +10,7 @@ import java.util.concurrent.*;
  * @packageName: thread.forkjoin
  * @description:
  * @date: 2021-01-17
- * <p>
+ *
  * ForkJoinPool()最适合的是计算密集型的任务
  */
 public class ForkJoinTest {
@@ -39,9 +39,8 @@ public class ForkJoinTest {
         System.out.println(Arrays.toString(arr));
         return arr;
     }
-
     //jdk8 并行流计算
-    public static int computer(int[] arrs) {
+    public static int computer(int[] arrs){
         long l = System.currentTimeMillis();
         int count = Arrays.stream(arrs).parallel().reduce(0, Integer::sum);
         System.out.println(System.currentTimeMillis() - l);
@@ -50,7 +49,7 @@ public class ForkJoinTest {
 }
 
 //没有返回值
-class su extends RecursiveAction {
+class su extends RecursiveAction{
 
     @Override
     protected void compute() {

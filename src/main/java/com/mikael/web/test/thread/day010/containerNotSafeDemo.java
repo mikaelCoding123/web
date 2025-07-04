@@ -5,7 +5,6 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * hashset list 非线程安全问题
- *
  * @Exception ConcurrentModificationException  并发时争抢修改
  */
 public class containerNotSafeDemo {

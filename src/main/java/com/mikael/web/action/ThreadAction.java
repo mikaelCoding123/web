@@ -19,7 +19,7 @@ public class ThreadAction {
 
     @GetMapping("test01")
     public Result test01() throws Exception {
-        threadService.run(new User(100, "hua,", 288));
+        threadService.run(new User(100,"hua,",288));
         return ResultUtil.success();
     }
 

@@ -3,6 +3,6 @@ package com.mikael.web.service;
 
 public interface ModeService {
 
-    String test01();
+    public String test01();
 
 }

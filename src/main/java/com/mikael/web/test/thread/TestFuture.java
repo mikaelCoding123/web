@@ -47,7 +47,7 @@ public class TestFuture {
     }
 
     static class User {
-        private final String name;
+        private String name;
 
         private User(String name) {
             this.name = name;

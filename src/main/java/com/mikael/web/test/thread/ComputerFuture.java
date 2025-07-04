@@ -50,7 +50,7 @@ public class ComputerFuture {
 
     private static void sleep(int i) {
         try {
-            Thread.sleep(i * 1000L);
+            Thread.sleep(i * 1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

@@ -1,5 +1,7 @@
 package com.mikael.web.test.Jdk8Features;
 
+import com.google.common.collect.Maps;
+
 import java.util.Arrays;
 import java.util.List;
 

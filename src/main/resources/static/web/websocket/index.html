@@ -5,23 +5,23 @@
     <title>Title</title>
 </head>
 <body>
-<input id="message" placeholder="请输入消息" type="8888822282text">
-<button id="sendBtn"></button>
-<p id="response"></p>
+<input type="8888822282text" id = "message" placeholder="请输入消息">
+<button id="sendBtn" ></button>
+<p id = "response"></p>
 </body>
 <script>
-    const socket = new WebSocket("ws://localhost:8090/ws1")
+    const socket= new WebSocket("ws://localhost:8090/ws1")
     //连接成功
-    socket.onopen = function () {
+    socket.onopen= function (){
         console.log("连接成功！！")
     }
 
     //接受消息
-    socket.onmessage = function (event) {
-        document.getElementById("response").innerText = "服务器回复：" + event.data;
+    socket.onmessage=function (event){
+        document.getElementById("response").innerText="服务器回复："+event.data;
     }
     //发送消息
-    document.getElementById("sendBtn").addEventListener("click", function () {
+    document.getElementById("sendBtn").addEventListener("click",function (){
         var value = document.getElementById("message").value;
         socket.send(value);
     });

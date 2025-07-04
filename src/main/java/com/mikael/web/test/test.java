@@ -22,7 +22,7 @@ class test {
             new Thread(() -> {
                 for (int t = 0; t < 10000; t++) {
                     try {
-                        Files.copy(sourcePath, Paths.get("Z:\\yu\\p" + threadLocal.get() + t + ".txt"), StandardCopyOption.REPLACE_EXISTING);
+                        Files.copy(sourcePath, Paths.get("Z:\\yu\\p" + threadLocal.get() + "" + t + ".txt"), StandardCopyOption.REPLACE_EXISTING);
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }

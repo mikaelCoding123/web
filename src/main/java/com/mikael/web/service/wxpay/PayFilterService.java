@@ -11,7 +11,11 @@ import com.mikael.web.bo.Order;
 public abstract class PayFilterService {
     public boolean filter(Order order) {
         System.out.println(".....PayFilterService......");
-        return order.getOrder_status().equals("2");
+        if (!order.getOrder_status().equals("2")) {
+            return false;
+        }
+
+        return true;
     }
 
 }
