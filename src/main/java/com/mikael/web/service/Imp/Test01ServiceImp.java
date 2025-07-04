@@ -1,7 +1,7 @@
 package com.mikael.web.service.Imp;
 
-import com.mikael.web.utils.result.Result;
 import com.mikael.web.service.Test01Service;
+import com.mikael.web.utils.result.Result;
 import org.springframework.stereotype.Service;
 
 @Service("Test01ServiceImp")

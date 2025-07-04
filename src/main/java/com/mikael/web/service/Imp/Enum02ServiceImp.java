@@ -10,7 +10,7 @@ public class Enum02ServiceImp implements EnumService {
 
     @Override
     public void sayHello(String string) {
-        log.info("Enum02ServiceImp=================="+string);
+        log.info("Enum02ServiceImp==================" + string);
 
     }
 

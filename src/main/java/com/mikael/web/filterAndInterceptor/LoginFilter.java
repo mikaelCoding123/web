@@ -1,7 +1,6 @@
 package com.mikael.web.filterAndInterceptor;
 
 import jakarta.servlet.*;
-import jakarta.servlet.annotation.WebFilter;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;

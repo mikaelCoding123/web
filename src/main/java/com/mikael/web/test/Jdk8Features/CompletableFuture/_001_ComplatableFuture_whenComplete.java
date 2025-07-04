@@ -11,15 +11,15 @@ public class _001_ComplatableFuture_whenComplete {
         CompletableFuture<Void> future = CompletableFuture.runAsync(new Runnable() {
             @Override
             public void run() {
-                int i=1/0;
+                int i = 1 / 0;
             }
         });
 
         CompletableFuture<Void> completableFuture = future.whenComplete(new BiConsumer<Void, Throwable>() {
             @Override
             public void accept(Void unused, Throwable throwable) {
-                if(throwable != null){
-                    System.out.println(throwable.toString());
+                if (throwable != null) {
+                    System.out.println(throwable);
                 }
                 System.out.println();
             }

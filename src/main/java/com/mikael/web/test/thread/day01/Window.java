@@ -1,7 +1,6 @@
 package com.mikael.web.test.thread.day01;
 
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -36,7 +35,7 @@ public class Window {
                 "thread-one")
                 .start();
 
-        List list = Arrays.asList(IntStream.range(1, 10));
+        List list = List.of(IntStream.range(1, 10));
         System.out.println();
     }
 }

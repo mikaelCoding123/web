@@ -11,7 +11,7 @@ public class StreamAPI {
     public static void main(String[] args) {
 
         int[] Aryyays = {1, 23, 4, 324, 5, 23};
-        List<int[]> ints = Arrays.asList(Aryyays);
+        List<int[]> ints = List.of(Aryyays);
         HashMap<String, Integer> hashMap = new HashMap<String, Integer>();
         hashMap.put("hua", 12);
         hashMap.put("li", 23);

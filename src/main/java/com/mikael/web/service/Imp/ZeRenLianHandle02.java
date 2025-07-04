@@ -17,7 +17,7 @@ public class ZeRenLianHandle02 implements ZeRenLian {
 
     @Override
     public void handle(String msg) {
-            log.info("ZeRenLianHandle02 handle msg:{}",msg);
+        log.info("ZeRenLianHandle02 handle msg:{}", msg);
 
     }
 }

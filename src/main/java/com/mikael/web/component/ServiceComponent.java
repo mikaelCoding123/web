@@ -24,11 +24,11 @@ public class ServiceComponent implements ApplicationListener<ServletRequestHandl
     @Override
     public void onApplicationEvent(ServletRequestHandledEvent event) {
         Throwable failureCause = event.getFailureCause();
-        System.out.println(test02Service.test01()+"  foh ,beans 数量" +applicationContext.getBeanDefinitionCount());
+        System.out.println(test02Service.test01() + "  foh ,beans 数量" + applicationContext.getBeanDefinitionCount());
         if (failureCause != null) {
-            log.info( "请求时发生的错误原因：%S",failureCause.getMessage());
+            log.info("请求时发生的错误原因：%S", failureCause.getMessage());
         }
-        log.info(" 请求客户端地址: %S,请求URL: %S,请求Method：%S,请求耗时：%d Millis%n ",event.getClientAddress(),event.getRequestUrl(),event.getMethod(),event.getProcessingTimeMillis());
+        log.info(" 请求客户端地址: %S,请求URL: %S,请求Method：%S,请求耗时：%d Millis%n ", event.getClientAddress(), event.getRequestUrl(), event.getMethod(), event.getProcessingTimeMillis());
     }
 
     @Override

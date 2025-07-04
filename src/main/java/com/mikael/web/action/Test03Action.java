@@ -52,7 +52,7 @@ public class Test03Action implements Serializable {
      * 枚举进行策略模式
      */
     @RequestMapping(value = "/enums", method = RequestMethod.POST)
-    @Test(value ="1234")
+    @Test(value = "1234")
     public Result enums(ModeType modeType) {
         ServiceEnum.valueOf(modeType.getModeType()).getService().sayHello(modeType.getObject().toString());
         return ResultUtil.success();

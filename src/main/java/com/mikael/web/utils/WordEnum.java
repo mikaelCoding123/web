@@ -6,12 +6,8 @@ package com.mikael.web.utils;
  */
 public enum WordEnum {
     WORLD_NOT_FOUND("请查看正确的地址"),
-    woi("")
-
-
-
-        ;
-    private String message;
+    woi("");
+    private final String message;
 
     WordEnum(String message) {
         this.message = message;

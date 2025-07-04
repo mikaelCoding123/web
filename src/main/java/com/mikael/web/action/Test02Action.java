@@ -23,11 +23,11 @@ public class Test02Action {
     @ResponseStatus(code = HttpStatus.OK)
     public Result test01() throws InterruptedException {
 
-        log.info("test01===="+Thread.currentThread());
+        log.info("test01====" + Thread.currentThread());
         log.info("test01======" + MDC.get("traceId"));
         Result result = test02Service.test02();
         System.out.println(result);
-        Result build = result.builder().code(4893418).build();
+        Result build = Result.builder().code(4893418).build();
 
         build.setCode(453).setMsg("fjklasf").setData("fjiw222222").setTraceId(MDC.get("traceId"));
 

@@ -1,7 +1,6 @@
 package com.mikael.web.test.enc;
 
 import cn.hutool.crypto.SecureUtil;
-import cn.hutool.jwt.JWT;
 
 import java.util.UUID;
 
@@ -27,16 +26,14 @@ public class Enc {
     }
 
     /**
-     *密码核对
+     * 密码核对
+     *
      * @param password1 输入的密码
      * @param password2 数据库的密码
      * @return boolean
      */
     public static boolean comparison(String password1, String password2) {
         String[] salt = password2.split("#");
-        if (password2.equals(salt[0] + "#" + SecureUtil.sha256(password1.trim() + salt[0]))) {
-            return true;
-        }
-        return false;
+        return password2.equals(salt[0] + "#" + SecureUtil.sha256(password1.trim() + salt[0]));
     }
 }

@@ -10,10 +10,9 @@ import org.springframework.stereotype.Service;
 public class Enum01ServiceImp implements EnumService {
 
 
-
     @Override
     public void sayHello(String string) {
-      log.info("Enum01ServiceImp=================="+string);
+        log.info("Enum01ServiceImp==================" + string);
 
     }
 }

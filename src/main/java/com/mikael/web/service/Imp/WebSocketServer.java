@@ -37,7 +37,6 @@ public class WebSocketServer {
     }
 
     /**
-     *
      * 收到客户端消息后调用的方法
      */
     @OnMessage

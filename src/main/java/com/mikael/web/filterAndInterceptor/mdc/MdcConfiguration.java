@@ -6,7 +6,7 @@ import org.springframework.core.task.TaskDecorator;
 
 @Configuration
 public class MdcConfiguration {
- 
+
     @Bean
     public TaskDecorator mdcTaskDecorator() {
         return new MdcTaskDecorator();

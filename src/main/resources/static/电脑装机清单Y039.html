@@ -1,1 +1,191 @@
-<!DOCTYPE html><html lang="en"> <head> <meta charset="UTF-8"/> <meta name="viewport" content="width=device-width, initial-scale=1.0"/> <meta name="renderer" content="webkit"/> <meta name="force-rendering" content="webkit"/> <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/> <title>电脑配置清单</title> <style type="text/css"> body{line-height: 1.42857; margin: 0; padding: 0; font-size: 12px;}.container{width: 778px; margin: 0 auto; background: url("../images/bg2.gif") left top repeat-x;}.title{font-size: 42px; line-height: 80px; height: 80px; margin: 0; text-align: center;}.input-fields{width: 100%; overflow: hidden;}.input-fields .input-field{float: left; width: 40%; line-height: 28px;}.input-fields .input-field:first-child, .input-fields .input-field:last-child{width: 30%;}.input-fields .input-field.date{text-align: right;}.input-fields .input-field.company{width: 40%;}.input-fields .input-field.contact2, .input-fields .input-field.remark{width: 30%;}.details{width: 100%; margin: 5px 0; border: 1px solid #000; border-spacing: 0; border-collapse: collapse;}.details td{border: 1px solid #000; text-align: center; height: 30px;}.product{text-align: center; line-height: 24px;}</style> </head> <body> <div class="container"> <h1 class="title">电脑配置清单</h1> <div class="input-fields"> <div class="input-field name"> 客户姓名： <u> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </u> </div><div class="input-field contact"> 联系方式： <u> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </u> </div><div class="input-field date"><u> 2024 </u>年<u> 11 </u>月<u> 21 </u>日</div></div><br/> <table class="details"> <colgroup> <col width="12%" align="center"/> <col width="64%" align="center"/> <col width="12%" align="center"/> <col width="12%" align="center"/> </colgroup> <tbody> <tr> <td><b>名称</b></td><td><b>型号</b></td><td><b>单价</b></td><td><b>质保</b></td></tr><tr> <td><b>处理器(CPU)</b></td><td>12th Gen Intel Core i5-12400F 六核</td><td></td><td></td></tr><tr> <td><b>主&nbsp;&nbsp;板</b></td><td>华硕 PRIME H610M-A D4（LPC Controller/eSPI Controller H610芯片组）</td><td></td><td></td></tr><tr> <td><b>内&nbsp;&nbsp;存</b></td><td>32 GB ( 芝奇 DDR4 3000MHz 16GB x 2 )</td><td></td><td></td></tr><tr> <td><b>硬&nbsp;&nbsp;盘</b></td><td>Shunwang Virtual SSD PRO (100 GB / 固态硬盘)</td><td></td><td></td></tr><tr> <td><b>显&nbsp;&nbsp;卡</b></td><td>NVIDIA GeForce RTX 4060 ( 8 GB / 七彩虹 )</td><td></td><td></td></tr><tr> <td><b>显示器</b></td><td>三星 SAM71E7 Odyssey G52A ( 31.6 英寸  )</td><td></td><td></td></tr><tr> <td><b>光&nbsp;&nbsp;驱</b></td><td></td><td></td><td></td></tr><tr> <td><b>机&nbsp;&nbsp;箱</b></td><td></td><td></td><td></td></tr><tr> <td><b>电&nbsp;&nbsp;源</b></td><td></td><td></td><td></td></tr><tr> <td><b>键盘/鼠标</b></td><td></td><td></td><td></td></tr><tr> <td><b>音&nbsp;&nbsp;响</b></td><td></td><td></td><td></td></tr><tr> <td><b>其&nbsp;&nbsp;他</b></td><td></td><td></td><td></td></tr><tr> <td><b>总&nbsp;&nbsp;计</b></td><td colspan="3"></td></tr></tbody> </table> <br/> <div class="input-fields"> <div class="input-field company"> 公司： <u> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </u> </div><div class="input-field contact2"> 联系方式： <u> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </u> </div><div class="input-field remark">备注：</div></div><br/> <div class="product"></div></div></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta content="webkit" name="renderer"/>
+    <meta content="webkit" name="force-rendering"/>
+    <meta content="IE=Edge,chrome=1" http-equiv="X-UA-Compatible"/>
+    <title>电脑配置清单</title>
+    <style type="text/css"> body {
+        line-height: 1.42857;
+        margin: 0;
+        padding: 0;
+        font-size: 12px;
+    }
+
+    .container {
+        width: 778px;
+        margin: 0 auto;
+        background: url("../images/bg2.gif") left top repeat-x;
+    }
+
+    .title {
+        font-size: 42px;
+        line-height: 80px;
+        height: 80px;
+        margin: 0;
+        text-align: center;
+    }
+
+    .input-fields {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .input-fields .input-field {
+        float: left;
+        width: 40%;
+        line-height: 28px;
+    }
+
+    .input-fields .input-field:first-child, .input-fields .input-field:last-child {
+        width: 30%;
+    }
+
+    .input-fields .input-field.date {
+        text-align: right;
+    }
+
+    .input-fields .input-field.company {
+        width: 40%;
+    }
+
+    .input-fields .input-field.contact2, .input-fields .input-field.remark {
+        width: 30%;
+    }
+
+    .details {
+        width: 100%;
+        margin: 5px 0;
+        border: 1px solid #000;
+        border-spacing: 0;
+        border-collapse: collapse;
+    }
+
+    .details td {
+        border: 1px solid #000;
+        text-align: center;
+        height: 30px;
+    }
+
+    .product {
+        text-align: center;
+        line-height: 24px;
+    }</style>
+</head>
+<body>
+<div class="container"><h1 class="title">电脑配置清单</h1>
+    <div class="input-fields">
+        <div class="input-field name"> 客户姓名： <u> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </u>
+        </div>
+        <div class="input-field contact"> 联系方式： <u> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </u>
+        </div>
+        <div class="input-field date"><u> 2024 </u>年<u> 11 </u>月<u> 21 </u>日</div>
+    </div>
+    <br/>
+    <table class="details">
+        <colgroup>
+            <col align="center" width="12%"/>
+            <col align="center" width="64%"/>
+            <col align="center" width="12%"/>
+            <col align="center" width="12%"/>
+        </colgroup>
+        <tbody>
+        <tr>
+            <td><b>名称</b></td>
+            <td><b>型号</b></td>
+            <td><b>单价</b></td>
+            <td><b>质保</b></td>
+        </tr>
+        <tr>
+            <td><b>处理器(CPU)</b></td>
+            <td>12th Gen Intel Core i5-12400F 六核</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><b>主&nbsp;&nbsp;板</b></td>
+            <td>华硕 PRIME H610M-A D4（LPC Controller/eSPI Controller H610芯片组）</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><b>内&nbsp;&nbsp;存</b></td>
+            <td>32 GB ( 芝奇 DDR4 3000MHz 16GB x 2 )</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><b>硬&nbsp;&nbsp;盘</b></td>
+            <td>Shunwang Virtual SSD PRO (100 GB / 固态硬盘)</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><b>显&nbsp;&nbsp;卡</b></td>
+            <td>NVIDIA GeForce RTX 4060 ( 8 GB / 七彩虹 )</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><b>显示器</b></td>
+            <td>三星 SAM71E7 Odyssey G52A ( 31.6 英寸 )</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><b>光&nbsp;&nbsp;驱</b></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><b>机&nbsp;&nbsp;箱</b></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><b>电&nbsp;&nbsp;源</b></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><b>键盘/鼠标</b></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><b>音&nbsp;&nbsp;响</b></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><b>其&nbsp;&nbsp;他</b></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><b>总&nbsp;&nbsp;计</b></td>
+            <td colspan="3"></td>
+        </tr>
+        </tbody>
+    </table>
+    <br/>
+    <div class="input-fields">
+        <div class="input-field company"> 公司： <u> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </u>
+        </div>
+        <div class="input-field contact2"> 联系方式： <u> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </u>
+        </div>
+        <div class="input-field remark">备注：</div>
+    </div>
+    <br/>
+    <div class="product"></div>
+</div>
+</body>
+</html>

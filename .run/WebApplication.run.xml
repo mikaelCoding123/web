@@ -1,15 +1,16 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="WebApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" singleton="false" nameIsGenerated="true">
-    <option name="ALTERNATIVE_JRE_PATH" value="17-lts" />
-    <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-    <option name="ENABLE_JMX_AGENT" value="false" />
-    <option name="ENABLE_LAUNCH_OPTIMIZATION" value="false" />
-    <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
-    <module name="web" />
-    <option name="SPRING_BOOT_MAIN_CLASS" value="com.mikael.web.WebApplication" />
-    <option name="UPDATE_ACTION_UPDATE_POLICY" value="UpdateClassesAndResources" />
-    <method v="2">
-      <option name="Make" enabled="true" />
-    </method>
-  </configuration>
+    <configuration default="false" name="WebApplication" type="SpringBootApplicationConfigurationType"
+                   factoryName="Spring Boot" singleton="false" nameIsGenerated="true">
+        <option name="ALTERNATIVE_JRE_PATH" value="17-lts"/>
+        <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true"/>
+        <option name="ENABLE_JMX_AGENT" value="false"/>
+        <option name="ENABLE_LAUNCH_OPTIMIZATION" value="false"/>
+        <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources"/>
+        <module name="web"/>
+        <option name="SPRING_BOOT_MAIN_CLASS" value="com.mikael.web.WebApplication"/>
+        <option name="UPDATE_ACTION_UPDATE_POLICY" value="UpdateClassesAndResources"/>
+        <method v="2">
+            <option name="Make" enabled="true"/>
+        </method>
+    </configuration>
 </component>

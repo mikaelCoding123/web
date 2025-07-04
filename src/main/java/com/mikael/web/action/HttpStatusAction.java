@@ -2,10 +2,8 @@ package com.mikael.web.action;
 
 import cn.hutool.extra.spring.SpringUtil;
 import com.mikael.web.service.Imp.Test001ServiceImp;
-import com.mikael.web.service.Imp.Test01ServiceImp;
 import com.mikael.web.utils.result.Result;
 import com.mikael.web.utils.result.ResultUtil;
-import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.*;
@@ -35,23 +33,20 @@ public class HttpStatusAction {
     }
 
 
-
     @Async
-    @RequestMapping(value = "/test01",method = RequestMethod.GET)
-    public Result test01(){
-        Test001ServiceImp test001ServiceImp = (Test001ServiceImp) SpringUtil.getBean("Test001ServiceImp");
+    @RequestMapping(value = "/test01", method = RequestMethod.GET)
+    public Result test01() {
+        Test001ServiceImp test001ServiceImp = SpringUtil.getBean("Test001ServiceImp");
         System.out.println(test001ServiceImp.test01());
         Optional optional = Optional.ofNullable(SpringUtil.getBean("test01"));
-        if (optional.isPresent()){
-            return ResultUtil.put(200,"success",optional.get());
-        }else {
+        if (optional.isPresent()) {
+            return ResultUtil.put(200, "success", optional.get());
+        } else {
             return ResultUtil.error();
         }
 
 
-
     }
-
 
 
 }

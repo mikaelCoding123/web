@@ -1,12 +1,9 @@
 package com.mikael.web.service.Imp;
 
 import com.mikael.web.service.ZeRenLian;
-import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.annotation.Primary;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 @Slf4j
 @Component
@@ -20,7 +17,7 @@ public class ZeRenLianHandle01 implements ZeRenLian {
 
     @Override
     public void handle(String msg) {
-            log.info("ZeRenLianHandle01 handle msg:{}",msg);
+        log.info("ZeRenLianHandle01 handle msg:{}", msg);
 
     }
 }

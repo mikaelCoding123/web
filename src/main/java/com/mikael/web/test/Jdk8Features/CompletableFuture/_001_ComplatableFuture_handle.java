@@ -31,7 +31,7 @@ public class _001_ComplatableFuture_handle {
             public Object apply(Object o, Throwable throwable) {
                 System.out.println("handle====" + o);
                 if (throwable != null) {
-                    System.out.println(throwable.toString());
+                    System.out.println(throwable);
                 }
 
                 return null;

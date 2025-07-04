@@ -45,8 +45,8 @@ public class Test01 {
         // 指定 lua 脚本，并且指定返回值类型
         DefaultRedisScript<Long> redisScript = new DefaultRedisScript<>(RELEASE_LOCK_LUA_SCRIPT, Long.class);
         // 参数一：redisScript，参数二：key列表，参数三：arg（可多个）
-        Long result =(Long)  redisTemplate.execute(redisScript, Collections.singletonList(lockKey), UUID);
-        System.out.println(result+"=====");
+        Long result = (Long) redisTemplate.execute(redisScript, Collections.singletonList(lockKey), UUID);
+        System.out.println(result + "=====");
 
 
     }

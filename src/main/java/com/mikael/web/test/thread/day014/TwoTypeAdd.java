@@ -14,7 +14,7 @@ public class TwoTypeAdd {
         System.out.println(b1.add(b2));
         /** 以上方法可以解决float类型的值加法精度问题* */
         TwoTypeAdd twoTypeAdd = new TwoTypeAdd();
-        System.out.println(twoTypeAdd.add(1l, 45));
+        System.out.println(twoTypeAdd.add(1L, 45));
     }
 
     public <T extends Number> double add(T t1, T t2) {

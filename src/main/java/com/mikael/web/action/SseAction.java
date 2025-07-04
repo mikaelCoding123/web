@@ -12,16 +12,15 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Executors;
 
 /**
- *
  * https://blog.csdn.net/ljh_learn_from_base/article/details/137798154
- *
+ * <p>
  * 服务端主动推送技术
  */
 @RestController
 @RequestMapping(value = "/sse")
 @CrossOrigin
 public class SseAction {
-    private static Map<String, SseEmitter> sseCache = new ConcurrentHashMap<>();
+    private static final Map<String, SseEmitter> sseCache = new ConcurrentHashMap<>();
 
     /**
      * 客户端发起订阅消息的方法

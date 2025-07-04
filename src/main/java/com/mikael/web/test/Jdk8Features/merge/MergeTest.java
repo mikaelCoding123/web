@@ -1,7 +1,6 @@
 package com.mikael.web.test.Jdk8Features.merge;
 
 
-
 import com.mikael.web.test.bo.User;
 
 import java.util.ArrayList;

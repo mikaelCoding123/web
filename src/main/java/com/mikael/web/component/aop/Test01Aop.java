@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Aspect
 public class Test01Aop {
-    private Logger log = LoggerFactory.getLogger(Test01Aop.class);
+    private final Logger log = LoggerFactory.getLogger(Test01Aop.class);
 
     // 定义切点（拦截的规则）
     @Pointcut("execution(* com.mikael.web.action.*.*())")

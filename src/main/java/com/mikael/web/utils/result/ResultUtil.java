@@ -17,7 +17,7 @@ public class ResultUtil {
 //        } else {
 //            serviceResult.setTraceId(MDC.get("traceId"));
 //        }
-        return  MDC.get("traceId") == null ? serviceResult.setTraceId("1234567890") : serviceResult.setTraceId(MDC.get("traceId"));
+        return MDC.get("traceId") == null ? serviceResult.setTraceId("1234567890") : serviceResult.setTraceId(MDC.get("traceId"));
     }
 
     public static Result error() {

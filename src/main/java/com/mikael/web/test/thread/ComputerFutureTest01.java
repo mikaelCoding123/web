@@ -2,7 +2,6 @@ package com.mikael.web.test.thread;
 
 import org.springframework.scheduling.concurrent.CustomizableThreadFactory;
 
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -39,7 +38,7 @@ public class ComputerFutureTest01 {
 
     private static void sleep(int i) {
         try {
-            Thread.sleep(i * 1000);
+            Thread.sleep(i * 1000L);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
