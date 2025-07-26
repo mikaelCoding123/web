@@ -6,4 +6,8 @@ package com.mikael.web.test.loading;/**
  */
  
 public class Test01 {
+  public static void main(String[] args){
+    ClassLoader classLoader = ClassLoader.getPlatformClassLoader();
+    System.out.println(classLoader);
+  }
 }

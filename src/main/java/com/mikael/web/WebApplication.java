@@ -1,14 +1,16 @@
 package com.mikael.web;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.SpringVersion;
 import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 //import java.io.Serial;
 import java.io.Serializable;
@@ -18,14 +20,13 @@ import java.io.Serializable;
  */
 @EnableAsync
 @EnableCaching
+@EnableScheduling
 @SpringBootApplication
 @ServletComponentScan
 public class WebApplication implements Serializable {
 
-//    @Serial//jdk14以后开始
-    private final static long serialVersionUID = 6961728318907695402L;
+    private static final Logger log = LoggerFactory.getLogger(WebApplication.class);
 
-    private static final Logger LOG = LogManager.getLogger();
 
     public static void main(String[] args) {
 
@@ -43,12 +44,13 @@ public class WebApplication implements Serializable {
         System.out.println("Spring Version "+SpringVersion.getVersion());
         System.out.println("jdk version: "+System.getProperty("java.version"));
 
-        SpringApplication.run(WebApplication.class, args);
+        ConfigurableApplicationContext run = SpringApplication.run(WebApplication.class, args);
+
 
 
         System.out.println(runtime.freeMemory()/(1024 * 1024) + "MB");
 
-        LOG.info("启动完成。。。。。");
+        log.info("启动完成。。。。。");
         System.out.println("启动完成。。。。。。。。。");
 
         String code = "0471";

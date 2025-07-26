@@ -1,8 +1,10 @@
 package com.mikael.web.action;
 
 
+import cn.hutool.extra.spring.SpringUtil;
 import com.mikael.web.bo.ModeType;
 import com.mikael.web.component.aop.Test;
+import com.mikael.web.service.Imp.Enum02ServiceImp;
 import com.mikael.web.service.Imp.ModeServiceImp;
 import com.mikael.web.service.Test02Service;
 import com.mikael.web.utils.ServiceEnum;
@@ -21,10 +23,7 @@ import java.io.Serializable;
 @Slf4j
 @RestController
 @RequestMapping("/mode")
-public class Test03Action implements Serializable {
-    @Serial
-    private static final long serialVersionUID = 1L;
-
+public class Test03Action {
     @Autowired
     private ApplicationContext applicationContext;
     @Autowired
@@ -33,6 +32,7 @@ public class Test03Action implements Serializable {
     @RequestMapping(value = "/test01", method = RequestMethod.GET)
     public Result test01() {
         log.info(applicationContext.getBeanDefinitionCount() + "");
+        //不推荐用这种方法来实现
         ModeServiceImp ba = applicationContext.getBean("ModeServiceImp", ModeServiceImp.class);
         ba.test01();
         System.out.println(test02Service.test01());

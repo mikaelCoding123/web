@@ -23,6 +23,23 @@ public class Test01 {
      * 释放锁lua脚本
      */
     private static final String RELEASE_LOCK_LUA_SCRIPT = "if redis.call('get', KEYS[1]) == ARGV[1] then return redis.call('del', KEYS[1]) else return 0 end";
+    /**
+     * 秒杀
+     * -- 判断商品是否存在
+     * local isExist = redis.call('exists', KEYS[1])                 -- 判断商品是否存在
+     *     if isExist == 1 then
+     *         local goodsNumber = redis.call('get', KEYS[1])        -- 获取商品的数量
+     *         if goodsNumber > "0" then
+     *             redis.call('decr', KEYS[1])                       -- 如果商品数量大于0，则库存减1
+     *             return "success"
+     *         else
+     *             redis.call("del", KEYS[1])                        -- 商品数量为0则从秒杀活动删除该商品
+     *             return "fail"
+     *         end
+     *     else return "notfound"
+     * end
+     */
+
 
     @Resource
     private RedisTemplate redisTemplate;

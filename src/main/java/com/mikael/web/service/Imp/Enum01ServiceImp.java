@@ -6,7 +6,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 @Slf4j
-@Service("Enum01ServiceImp")
+//@Service("Enum01ServiceImp")
+@Service("Enum02ServiceImp") //测试
 public class Enum01ServiceImp implements EnumService {
 
 
