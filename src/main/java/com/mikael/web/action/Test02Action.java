@@ -1,8 +1,10 @@
 package com.mikael.web.action;
 
+import com.mikael.web.service.EnumService;
 import com.mikael.web.service.Test02Service;
 import com.mikael.web.utils.exception.BizException;
 import com.mikael.web.utils.result.Result;
+import com.mikael.web.utils.result.ResultUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
@@ -17,6 +19,19 @@ public class Test02Action {
     private static final Logger log = LoggerFactory.getLogger(Test02Action.class);
     @Autowired
     private Test02Service test02Service;
+
+    @Autowired
+    private EnumService Enum01ServiceImp;
+
+
+
+    @RequestMapping("/test-1")
+    public Result test_1(){
+
+        Enum01ServiceImp.sayHello("hello");
+
+        return ResultUtil.success();
+    }
 
 
     @RequestMapping(value = "/test01", method = RequestMethod.GET)
