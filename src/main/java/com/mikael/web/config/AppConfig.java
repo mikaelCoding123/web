@@ -1,5 +1,9 @@
 package com.mikael.web.config;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.PropertyAccessor;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.jsontype.impl.LaissezFaireSubTypeValidator;
 import com.github.benmanes.caffeine.cache.Caffeine;
 import com.mikael.web.filterAndInterceptor.LoginFilter;
 import org.redisson.Redisson;
@@ -17,6 +21,8 @@ import org.springframework.data.redis.cache.RedisCacheConfiguration;
 import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
+import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.web.client.RestTemplate;
 
@@ -129,14 +135,37 @@ public class AppConfig {
     }
 
 
+
+
     @Bean
-    public RedisTemplate myRedisTemplate(RedisConnectionFactory redisConnectionFactory) {
+    public RedisTemplate<Object, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
         RedisTemplate<Object, Object> redisTemplate = new RedisTemplate<>();
-        StringRedisSerializer stringRedisSerializer = new StringRedisSerializer();
         redisTemplate.setConnectionFactory(redisConnectionFactory);
-        redisTemplate.setKeySerializer(stringRedisSerializer);
-        redisTemplate.setValueSerializer(stringRedisSerializer);
+        //创建一个json的序列化对象
+        GenericJackson2JsonRedisSerializer jackson2JsonRedisSerializer = new GenericJackson2JsonRedisSerializer();
+        //设置value的序列化方式json
+        redisTemplate.setValueSerializer(jackson2JsonRedisSerializer);
+        //设置key序列化方式String
+        redisTemplate.setKeySerializer(new StringRedisSerializer());
+        //设置hash key序列化方式String
+        redisTemplate.setHashKeySerializer(new StringRedisSerializer());
+        //设置hash value序列化json
+        redisTemplate.setHashValueSerializer(jackson2JsonRedisSerializer);
+        // 设置支持事务
+        redisTemplate.setEnableTransactionSupport(true);
+        redisTemplate.afterPropertiesSet();
         return redisTemplate;
     }
+
+    @Bean
+    public RedisSerializer<Object> redisSerializer() {
+        //创建JSON序列化器
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
+        //必须设置，否则无法将JSON转化为对象，会转化成Map类型
+        objectMapper.activateDefaultTyping(LaissezFaireSubTypeValidator.instance, ObjectMapper.DefaultTyping.NON_FINAL);
+        return new GenericJackson2JsonRedisSerializer(objectMapper);
+    }
+
 
 }
