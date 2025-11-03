@@ -77,7 +77,7 @@ public class ExecuteDemo {
   @Scheduled(cron ="*/3 * * * * *")
   private void test01(){
     try {
-      System.out.println("Scheduled test01");
+      System.out.println("Scheduled test01"+"09点36分");
       Thread.sleep(10_000L);
 
     } catch (InterruptedException e) {

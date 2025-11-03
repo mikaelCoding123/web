@@ -67,4 +67,8 @@ public class Test01 {
 
 
     }
+    @Test
+    void test02(){
+        System.out.println(TimeUnit.SECONDS);
+    }
 }

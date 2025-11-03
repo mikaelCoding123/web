@@ -2,23 +2,19 @@ package com.mikael.web.action;
 
 
 import com.mikael.web.bo.Admin;
-import com.mikael.web.utils.exception.BizException;
-import com.mikael.web.utils.result.CodeEnum;
-import com.mikael.web.utils.result.Result;
 import com.mikael.web.service.Imp.Test01ServiceImp;
 import com.mikael.web.service.Imp.Test02ServiceImp;
 import com.mikael.web.service.Test02Service;
+import com.mikael.web.utils.result.CodeEnum;
+import com.mikael.web.utils.result.Result;
 import com.mikael.web.utils.result.ResultUtil;
-import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.websocket.server.PathParam;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.MDC;
 import org.springframework.context.ApplicationContext;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.Assert;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -28,7 +24,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Optional;
 import java.util.UUID;
-import java.util.function.Supplier;
 
 
 @Slf4j
@@ -82,7 +77,6 @@ public class Test01Action {
     @RequestMapping(value = "/test033", method = RequestMethod.GET)
     public Result test033(@RequestParam("type") String type) {
         log.info("type==" + type);
-
         return ResultUtil.success();
     }
 

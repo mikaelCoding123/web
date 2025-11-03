@@ -12,7 +12,6 @@ import org.springframework.core.SpringVersion;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
-//import java.io.Serial;
 import java.io.Serializable;
 
 /**
@@ -45,7 +44,7 @@ public class WebApplication implements Serializable {
         System.out.println("jdk version: "+System.getProperty("java.version"));
 
         ConfigurableApplicationContext run = SpringApplication.run(WebApplication.class, args);
-
+        String s = "";
 
 
         System.out.println(runtime.freeMemory()/(1024 * 1024) + "MB");
