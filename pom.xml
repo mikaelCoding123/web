@@ -176,6 +176,12 @@
             <artifactId>spring-boot</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com</groupId>
+            <artifactId>bean-common</artifactId>
+            <version>1.0</version>
+        </dependency>
+
 
     </dependencies>
 

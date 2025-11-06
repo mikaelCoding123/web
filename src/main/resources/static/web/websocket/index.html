@@ -1,3 +1,4 @@
+<!--v1.0.0-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +11,7 @@
 <p id = "response"></p>
 </body>
 <script>
-    const socket= new WebSocket("ws://localhost:8090/ws1")
+    var socket= new WebSocket("ws://localhost:18092/ws1")
     //连接成功
     socket.onopen= function (){
         console.log("连接成功！！")

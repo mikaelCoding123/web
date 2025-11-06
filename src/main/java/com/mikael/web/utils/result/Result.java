@@ -4,6 +4,7 @@ import lombok.*;
 import lombok.experimental.Accessors;
 import org.slf4j.MDC;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 @Getter

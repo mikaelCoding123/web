@@ -28,6 +28,16 @@ public static void main(String[] args){
   skipListMap.put("ab", 1);
   skipListMap.put("ab", 1);
 
+  String a= "3.41.198273";
+  String verion = "3.54."+100099;
+    System.out.println(verion);
+
+    String s = """
+            
+            """;
+
+    int c = "13065975433".hashCode()%1024;
+    System.out.println(c);
 
 }
 }
